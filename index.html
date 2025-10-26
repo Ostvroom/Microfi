@@ -127,18 +127,6 @@
     </div>
   </header>
 
-  <!-- HOW IT WORKS -->
-  <section class="section">
-    <div class="container">
-      <h2 style="margin:0 0 .8rem">How it works</h2>
-      <div class="kgrid">
-        <div class="card"><h3>1) Connect</h3><p>Open the Telegram bot, tap <b>Connect X</b>, and generate your Social Card.</p></div>
-        <div class="card"><h3>2) Create</h3><p>Join a campaign and post a thoughtful thread, video, or image.</p></div>
-        <div class="card"><h3>3) Earn</h3><p>Submit your post URL, get approved, and earn <b>$MICRO</b>. Rewards vary per proof.</p></div>
-      </div>
-    </div>
-  </section>
-
   <!-- TELEGRAM BOT PREVIEW (SQUARE) -->
   <section class="section" id="bot">
     <div class="container">
@@ -169,6 +157,18 @@
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">How it works</h2>
+      <div class="kgrid">
+        <div class="card"><h3>1) Connect</h3><p>Open the Telegram bot, tap <b>Connect X</b>, and generate your Social Card.</p></div>
+        <div class="card"><h3>2) Create</h3><p>Join a campaign and post a thoughtful thread, video, or image.</p></div>
+        <div class="card"><h3>3) Earn</h3><p>Submit your post URL, get approved, and earn <b>$MICRO</b>. Rewards vary per proof.</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- $MICRO FLOW / TOKENOMICS -->
   <section class="section" id="flow">
     <div class="container">
@@ -186,8 +186,8 @@
             </filter>
             <style>
               .n{fill:#11121a;stroke:#1b1c2b;stroke-width:2;rx:14;ry:14;filter:url(#s)}
-              .t{fill:#e7e9ee;font:600 16px Inter,Arial}
-              .sm{fill:#b9c2d2;font:400 13px Inter,Arial}
+              .t{fill:#e7e9ee;font:600 16px Inter,Arial; text-anchor: middle;} /* Added text-anchor */
+              .sm{fill:#b9c2d2;font:400 13px Inter,Arial; text-anchor: middle;} /* Added text-anchor */
               .a{fill:none;stroke:url(#g);stroke-width:3;marker-end:url(#m)}
             </style>
             <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
@@ -197,36 +197,38 @@
 
           <!-- Top row -->
           <rect class="n" x="30"  y="40"  width="270" height="90"/>
-          <text class="t" x="50" y="72">Client buys $MICRO</text>
-          <text class="sm" x="50" y="98">Amount scales with campaign days (min 10)</text>
+          <text class="t" x="165" y="72">Client buys $MICRO</text>
+          <text class="sm" x="165" y="98">Amount scales with campaign days (min 10)</text>
 
           <rect class="n" x="330" y="40"  width="290" height="90"/>
-          <text class="t" x="350" y="72">Lock campaign pool</text>
-          <text class="sm" x="350" y="98">Pool locked for selected duration</text>
+          <text class="t" x="475" y="72">Lock campaign pool</text>
+          <text class="sm" x="475" y="98">Pool locked for selected duration</text>
 
           <rect class="n" x="650" y="40"  width="220" height="90"/>
-          <text class="t" x="670" y="72">Launch on Telegram</text>
-          <text class="sm" x="670" y="98">Visible in MicroFi bot</text>
+          <text class="t" x="760" y="72">Launch on Telegram</text>
+          <text class="sm" x="760" y="98">Visible in MicroFi bot</text>
 
           <rect class="n" x="910" y="40"  width="160" height="90"/>
-          <text class="t" x="930" y="72">Engagers & Raiders</text>
-          <text class="sm" x="930" y="98">Create posts, submit proofs</text>
+          <text class="t" x="990" y="72">Engagers & Raiders</text>
+          <text class="sm" x="990" y="98">Create posts, submit proofs</text>
 
           <!-- Bottom row -->
           <rect class="n" x="270" y="210" width="330" height="90"/>
-          <text class="t" x="290" y="242">Mindshare distribution</text>
-          <text class="sm" x="290" y="268">Approved proofs earn from the pool</text>
+          <text class="t" x="435" y="242">Mindshare distribution</text>
+          <text class="sm" x="435" y="268">Approved proofs earn from the pool</text>
 
           <rect class="n" x="640" y="210" width="300" height="90"/>
-          <text class="t" x="660" y="242">Seasonal settlement</text>
-          <text class="sm" x="660" y="268">Bonuses + referral payouts</text>
+          <text class="t" x="790" y="242">Seasonal settlement</text>
+          <text class="sm" x="790" y="268">Bonuses + referral payouts</text>
 
           <!-- Smooth arrows -->
-          <path class="a" d="M300,85 C320,85 340,85 330,85"/>
-          <path class="a" d="M620,85 C640,85 660,85 650,85"/>
-          <path class="a" d="M870,85 C890,85 905,85 910,85"/>
-          <path class="a" d="M990,130 C990,175 950,210 600,210"/>
-          <path class="a" d="M600,255 C620,255 635,255 640,255"/>
+          <path class="a" d="M300,85 L330,85"/> <!-- Adjusted arrow -->
+          <path class="a" d="M620,85 L650,85"/> <!-- Adjusted arrow -->
+          <path class="a" d="M870,85 L910,85"/> <!-- Adjusted arrow -->
+          <path class="a" d="M990,130 Q1050,170 940,210"/> <!-- Curve from Engagers to Seasonal Settlement -->
+          <path class="a" d="M640,255 L600,255"/> <!-- Arrow from Seasonal Settlement to Mindshare distribution -->
+          <path class="a" d="M270,255 L150,255 Q100,255 100,200 Q100,150 150,130 Q200,130 300,130"/> <!-- Arrow from Mindshare to Client buys -->
+
         </svg>
       </div>
 
