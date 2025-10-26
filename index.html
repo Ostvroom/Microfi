@@ -469,26 +469,6 @@
         </details>
       </div>
 
-      <h2 style="margin:1.8rem 0 .8rem">Airdrop</h2>
-      <div class="card">
-        <p><b>Season 0</b> — We allocate a portion of <b>$MICRO</b> to early contributors who help bootstrap the community.</p>
-        <ul>
-          <li>Signals: consistent weekly activity, original posts, solid referrals</li>
-          <li>How to qualify: connect X, join campaigns, publish engaging posts, share your referral link</li>
-          <li>Distribution: periodic snapshots, rewards after each season</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="newsletter" style="max-width:500px;margin:0 auto 2rem">
-      <h3 style="margin:0 0 1rem">Get early access</h3>
-      <form id="footerNewsletter" novalidate aria-label="Footer Newsletter Signup">
-        <input type="email" placeholder="your@email.com" required />
-        <button type="submit" class="btn secondary" style="margin-top:.5rem;width:100%">Sign up</button>
-      </form>
-    </div>
     <p>© 2025 MicroFi •
       <a href="https://x.com/MicroFI_on" target="_blank" rel="noopener">Twitter</a> •
       <a href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Telegram</a> •
@@ -500,14 +480,6 @@
   <!-- Back to Top -->
   <button id="back-to-top" aria-label="Back to top">↑</button>
 
-  <!-- Early Beta bar -->
-  <div id="beta-bar" style="position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;align-items:center;gap:.9rem;padding:.9rem 1rem;background:linear-gradient(90deg, rgba(124,58,237,.95), rgba(6,182,212,.95));box-shadow:0 -8px 30px rgba(0,0,0,.35);color:#fff;font-weight:600">
-    <span>🚧 MicroFi is in <b>Early Beta</b>. Expect rapid updates.</span>
-    <a href="https://t.me/MicroFiBot" target="_blank" rel="noopener" style="background:#0b0b11;border-radius:12px;padding:.55rem .9rem;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.15)">Join the Telegram</a>
-    <button id="beta-close" aria-label="Dismiss beta notice" style="all:unset;cursor:pointer;padding:.3rem .6rem;border-radius:8px;background:rgba(255,255,255,.15)">✕</button>
-  </div>
-
-  <script>
     // Toggle roadmap item
     function toggleRoadmap(item){ item.classList.toggle('open'); }
 
@@ -585,34 +557,6 @@
       });
     })();
 
-    // Newsletter forms (top + footer)
-    (function(){
-      ['newsletterForm','footerNewsletter'].forEach(id=>{
-        const form=document.getElementById(id);
-        if(!form) return;
-        form.addEventListener('submit',e=>{
-          e.preventDefault();
-          const input=form.querySelector('input[type="email"]');
-          const email=(input?.value||'').trim();
-          if(!/\S+@\S+\.\S+/.test(email)){ alert('Please enter a valid email'); return; }
-          if(id==='newsletterForm'){ document.getElementById('newsletterSuccess').style.display='block'; }
-          else{ alert('Thanks for subscribing!'); }
-          form.reset();
-        });
-      });
-    })();
-
-    // Early Beta bar memory
-    (function(){
-      try{
-        const bar=document.getElementById('beta-bar');
-        const btn=document.getElementById('beta-close');
-        const key='microfi_beta_dismissed_v1';
-        if(localStorage.getItem(key)==='1') bar.style.display='none';
-        btn&&btn.addEventListener('click',()=>{bar.style.display='none';localStorage.setItem(key,'1');});
-      }catch(e){}
-    })();
-
     // Back to top
     (function(){
       const btn=document.getElementById('back-to-top');
@@ -635,3 +579,4 @@
   </script>
 </body>
 </html>
+
