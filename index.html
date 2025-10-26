@@ -162,11 +162,6 @@
     .roadmap-details li{position:relative;padding-left:1.5rem;margin-bottom:.5rem}
     .roadmap-details li::before{content:'•';position:absolute;left:0;color:var(--brand);font-weight:bold}
 
-    /* Newsletter */
-    .newsletter{background:linear-gradient(135deg,var(--brand),var(--brand2));border-radius:20px;padding:2rem;text-align:center;color:#fff}
-    .newsletter input{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;padding:.75rem;width:100%;max-width:300px;margin:1rem 0}
-    .newsletter input::placeholder{color:rgba(255,255,255,.7)}
-
     /* footer */
     .footer{padding:48px 0;border-top:1px solid #171828;color:#9aa3b2;text-align:center}
     .footer .newsletter{margin-bottom:2rem}
@@ -224,37 +219,6 @@
       <div class="panel"><div class="hero-visual" role="img" aria-label="MicroFi banner"></div></div>
     </div>
   </header>
-
-  <!-- JOIN CAMPAIGN (top) -->
-  <section class="section" id="join">
-    <div class="container">
-      <h2 style="margin:0 0 .8rem">Join the current campaign</h2>
-      <div class="card" style="max-width:600px;margin:auto;text-align:left">
-        <form id="joinForm" novalidate aria-label="Join Campaign Form">
-          <label for="username"><b>Enter X @username</b></label><br/>
-          <input type="text" id="username" required placeholder="@yourhandle"
-            style="width:100%;margin:.5rem 0 1rem;background:#121327;color:#e7e9ee;border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="username-help"/>
-
-          <label style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem">
-            <input type="checkbox" id="followed" style="accent-color:#7c3aed"/>
-            <span>Followed <a href="https://x.com/MicroFI_on" target="_blank" rel="noopener">@MicroFI_on</a> and turned on notifications ✅</span>
-          </label>
-
-          <label for="tweet"><b>Like + Retweet + Reply (drop link)</b></label><br/>
-          <input type="url" id="tweet" required placeholder="https://x.com/you/status/..."
-            style="width:100%;margin:.5rem 0 1.2rem;background:#121327;color:#e7e9ee;border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="tweet-help"/>
-
-          <button type="submit" class="btn" style="width:100%;justify-content:center">Submit & Join</button>
-        </form>
-
-        <div id="successMsg" style="display:none;text-align:center;margin-top:1rem;padding:.8rem;border-radius:12px;background:rgba(6,182,212,.1);color:#06b6d4">
-          🎉 You’re in the list! Our team will verify your post soon.
-        </div>
-        <p id="username-help" class="sr-only">Enter your X (Twitter) username without the @ symbol.</p>
-        <p id="tweet-help" class="sr-only">Provide the direct link to your tweet.</p>
-      </div>
-    </div>
-  </section>
 
   <!-- TELEGRAM BOT PREVIEW -->
   <section class="section" id="bot">
@@ -412,44 +376,36 @@
       </div>
     </div>
   </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section">
+  <!-- JOIN CAMPAIGN (top) -->
+  <section class="section" id="join">
     <div class="container">
-      <h2 style="margin:0 0 .8rem;text-align:center">What creators are saying</h2>
-      <div class="kgrid">
-        <div class="card">
-          <p>"MicroFi turned my casual posts into real earnings. The mindshare scoring is fair and motivating!"</p>
-          <p style="color:var(--muted)">— John Doe, @TechGuru</p>
-        </div>
-        <div class="card">
-          <p>"Staking $MICRO for extras has been a game-changer. Easy bot integration too."</p>
-          <p style="color:var(--muted)">— Alice Smith, @CryptoAlice</p>
-        </div>
-        <div class="card">
-          <p>"Joined 3 campaigns already—quick approvals and transparent rewards."</p>
-          <p style="color:var(--muted)">— Bob Martin, @DeFiBob</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h2 style="margin:0 0 .8rem">Join the current campaign</h2>
+      <div class="card" style="max-width:600px;margin:auto;text-align:left">
+        <form id="joinForm" novalidate aria-label="Join Campaign Form">
+          <label for="username"><b>Enter X @username</b></label><br/>
+          <input type="text" id="username" required placeholder="@yourhandle"
+            style="width:100%;margin:.5rem 0 1rem;background:#121327;color:#e7e9ee;border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="username-help"/>
 
-  <!-- NEWSLETTER SIGNUP -->
-  <section class="section">
-    <div class="container">
-      <div class="newsletter">
-        <h2 style="margin:0 0 1rem;color:#fff">Stay updated on $MICRO launches</h2>
-        <p style="margin:0 0 1.5rem;opacity:.9">Subscribe for beta access, campaign alerts, and exclusive airdrops.</p>
-        <form id="newsletterForm" novalidate aria-label="Newsletter Signup">
-          <input type="email" id="email" required placeholder="your@email.com" aria-describedby="email-help" />
-          <button type="submit" class="btn" style="margin-top:1rem;background:#fff;color:var(--brand);font-weight:700">Subscribe</button>
+          <label style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem">
+            <input type="checkbox" id="followed" style="accent-color:#7c3aed"/>
+            <span>Followed <a href="https://x.com/MicroFI_on" target="_blank" rel="noopener">@MicroFI_on</a> and turned on notifications ✅</span>
+          </label>
+
+          <label for="tweet"><b>Like + Retweet + Reply (drop link)</b></label><br/>
+          <input type="url" id="tweet" required placeholder="https://x.com/you/status/..."
+            style="width:100%;margin:.5rem 0 1.2rem;background:#121327;color:#e7e9ee;border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="tweet-help"/>
+
+          <button type="submit" class="btn" style="width:100%;justify-content:center">Submit & Join</button>
         </form>
-        <div id="newsletterSuccess" style="display:none;margin-top:1rem;color:#fff;background:rgba(255,255,255,.1);padding:.5rem;border-radius:8px">Thanks for subscribing! Check your email.</div>
-        <p id="email-help" class="sr-only">Enter your email address to subscribe.</p>
+
+        <div id="successMsg" style="display:none;text-align:center;margin-top:1rem;padding:.8rem;border-radius:12px;background:rgba(6,182,212,.1);color:#06b6d4">
+          🎉 You’re in the list! Our team will verify your post soon.
+        </div>
+        <p id="username-help" class="sr-only">Enter your X (Twitter) username without the @ symbol.</p>
+        <p id="tweet-help" class="sr-only">Provide the direct link to your tweet.</p>
       </div>
     </div>
   </section>
-
   <!-- FAQ & AIRDROP -->
   <section class="section" id="faq">
     <div class="container">
@@ -579,4 +535,5 @@
   </script>
 </body>
 </html>
+
 
