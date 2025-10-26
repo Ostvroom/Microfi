@@ -263,58 +263,29 @@
     </div>
   </section>
 
-  <!-- $MICRO FLOW / TOKENOMICS (Fishbone Diagram) -->
+  <!-- $MICRO FLOW / TOKENOMICS (Flowchart) -->
   <section class="section" id="flow">
     <div class="container">
-      <h2 style="margin:0 0 .8rem">How $MICRO flows - Campaign Engagement Analysis</h2>
-      <p class="lead" style="margin-bottom:1rem">Fishbone diagram showing causes of low engagement in MicroFi campaigns, based on workflow stages.</p>
+      <h2 style="margin:0 0 .8rem">How $MICRO flows – The MicroFi Workflow</h2>
+      <p class="lead" style="margin-bottom:1rem">A simple flow diagram showing the journey of $MICRO tokens within the MicroFi ecosystem.</p>
 
       <div class="flow">
         <div class="mermaid">
-          graph LR
-            %% Problem/Effect (Head of fish - right side)
-            E[Low Engagement in Campaigns<br/><small>Result: Poor mindshare & wasted $MICRO pools</small>]:::effect
-
-            %% Main categories (Major bones - branching leftward)
-            CS[Client Setup<br/>- Inadequate pool size<br/>- Short duration] -.-> E
-            PL[Platform Launch<br/>- Bot visibility issues<br/>- Poor Telegram integration] -.-> E
-            CP[Creator Participation<br/>- Low awareness of campaigns<br/>- Complex proof submission] -.-> E
-            PA[Proof Approval<br/>- Strict mindshare scoring<br/>- Slow admin review] -.-> E
-            RD[Reward Distribution<br/>- Uncompetitive $MICRO rates<br/>- Delayed payouts] -.-> E
-            EF[External Factors<br/>- Market volatility<br/>- Telegram algo changes] -.-> E
-
-            %% Sub-causes (Minor bones - deeper branching)
-            subgraph SubCS [" "]
-              CS1[Pool < min 10 days] -.-> CS
-              CS2[No scaling with days] -.-> CS
-            end
-            subgraph SubPL [" "]
-              PL1[Campaign not visible in bot] -.-> PL
-              PL2[Launch timing mismatches] -.-> PL
-            end
-            subgraph SubCP [" "]
-              CP1[Lack of creator incentives] -.-> CP
-              CP2[Difficult content guidelines] -.-> CP
-            end
-            subgraph SubPA [" "]
-              PA1[Biased social card scoring] -.-> PA
-              PA2[No bonuses for quality] -.-> PA
-            end
-            subgraph SubRD [" "]
-              RD1[Pool depletion too fast] -.-> RD
-              RD2[Unclear staking benefits] -.-> RD
-            end
-            subgraph SubEF [" "]
-              EF1[Low $MICRO liquidity] -.-> EF
-              EF2[Competition from other bots] -.-> EF
-            end
+          graph TD
+            A[Client Purchases $MICRO<br/><small>Amount scales with campaign duration</small>] --> B{Campaign Lock<br/><small>$MICRO pool locked for duration</small>}
+            B --> C[Campaign Launch<br/><small>Visible on MicroFi Telegram bot</small>]
+            C --> D[Engagers & Raiders Participate<br/><small>Users create content & submit proofs</small>]
+            D --> E[Mindshare Distribution<br/><small>Approved proofs earn from $MICRO pool</small>]
+            E --> F{Engagers Stake $MICRO<br/>or Use / Trade}
+            F --> G[Additional Rewards / Items / USDC]
 
             %% Styling for dark theme & branding
-            classDef effect fill:#ef4444,stroke:#dc2626,stroke-width:4px,color:#fff
-            classDef category fill:#1e40af,stroke:#7c3aed,stroke-width:2px,color:#e7e9ee
-            classDef subcause fill:#3b82f6,stroke:#06b6d4,stroke-width:1px,color:#e7e9ee
-            class CS,PL,CP,PA,RD,EF category
-            class CS1,CS2,PL1,PL2,CP1,CP2,PA1,PA2,RD1,RD2,EF1,EF2 subcause
+            classDef process fill:#1e40af,stroke:#7c3aed,stroke-width:2px,color:#e7e9ee
+            classDef decision fill:#ef4444,stroke:#dc2626,stroke-width:2px,color:#fff
+            classDef outcome fill:#3b82f6,stroke:#06b6d4,stroke-width:1px,color:#e7e9ee
+            class A,C,D,E process
+            class B decision
+            class F outcome
             linkStyle default stroke:#06b6d4,stroke-width:2px
         </div>
       </div>
@@ -499,7 +470,7 @@
       </div>
     </div>
   </section>
-
+  
   <!-- FAQ -->
   <section class="section" id="faq">
     <div class="container">
@@ -688,3 +659,4 @@
   </script>
 </body>
 </html>
+
