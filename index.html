@@ -130,8 +130,21 @@
     .bot-overlay p{margin:0;color:#dfe3ee}
 
     /* Flow diagram */
-    .flow{background:linear-gradient(180deg,#121326,#0d0e18);border:1px solid var(--line);border-radius:16px;padding:1.25rem}
-    .flow svg{width:100%;height:auto;display:block}
+    graph TD
+    subgraph MicroFi Workflow
+        A[Client Purchases $MICRO]:::start --> B{Campaign Lock}:::decision
+        B -- Yes --> C[Campaign Launch]:::process
+        C --> D[Engagers & Raiders Participate]:::process
+        D --> E[Mindshare Distribution]:::process
+        E --> F{Engagers Stake $MICRO<br/>or Use / Trade}:::decision
+        F --> G[Additional Rewards / Items / USDC]:::end
+    end
+
+    classDef start fill:#7C3AED,stroke:#6D28D9,stroke-width:2px,color:#FFFFFF,font-weight:bold,border-radius:10px;
+    classDef process fill:#1E40AF,stroke:#1D4ED8,stroke-width:2px,color:#E7E9EE;
+    classDef decision fill:#EF4444,stroke:#DC2626,stroke-width:2px,color:#FFFFFF,font-weight:bold,border-radius:50%;
+    classDef end fill:#06B6D4,stroke:#0891B2,stroke-width:2px,color:#FFFFFF,font-weight:bold,border-radius:10px;
+    linkStyle default stroke:#A78BFA,stroke-width:2px;
 
     /* Tiny calculator */
     .calc{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:.8rem}
@@ -659,4 +672,5 @@
   </script>
 </body>
 </html>
+
 
