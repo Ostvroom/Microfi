@@ -6,20 +6,32 @@
   <title>MicroFi — Earn $MICRO for your influence</title>
   <link rel="icon" href="favicon.png" />
   <style>
-    :root{ --bg:#0b0b11; --panel:#0f1018; --text:#e7e9ee; --muted:#9aa3b2; --brand:#7c3aed; --brand2:#06b6d4; }
+    :root{
+      --bg:#0b0b11; --panel:#0f1018; --text:#e7e9ee; --muted:#9aa3b2;
+      --brand:#7c3aed; --brand2:#06b6d4; --line:#1b1c2b;
+    }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Arial}
+    body{margin:0;background:var(--bg);color:var(--text);
+         font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Arial}
     a{color:#c4b5fd;text-decoration:none} a:hover{text-decoration:underline}
     .container{width:min(1100px,92%);margin:0 auto;padding:1rem}
+
     /* nav */
     nav{position:sticky;top:0;z-index:5;backdrop-filter:saturate(180%) blur(8px);
-        background:linear-gradient(to bottom,rgba(11,11,17,.9),rgba(11,11,17,.6));border-bottom:1px solid #1a1b2a}
+        background:linear-gradient(to bottom,rgba(11,11,17,.92),rgba(11,11,17,.65));
+        border-bottom:1px solid #1a1b2a}
     .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
-    .brand{display:flex;align-items:center;gap:.7rem}
-    .brand img{width:40px;height:40px;border-radius:10px;object-fit:contain}
-    .btn{display:inline-flex;gap:.55rem;align-items:center;padding:.75rem 1.05rem;border-radius:12px;border:0;cursor:pointer;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 10px 30px rgba(124,58,237,.25)}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .brand img{width:56px;height:56px;border-radius:12px;object-fit:contain}
+    .brand b{letter-spacing:.2px;font-size:1.15rem}
+
+    .btn{display:inline-flex;gap:.55rem;align-items:center;padding:.75rem 1.05rem;
+         border-radius:12px;border:0;cursor:pointer;font-weight:700;color:#fff;
+         background:linear-gradient(135deg,var(--brand),var(--brand2));
+         box-shadow:0 10px 30px rgba(124,58,237,.25)}
     .btn.secondary{background:#1b1c28;border:1px solid #26283a;color:#e7e9ee;font-weight:600}
     .btn:hover{transform:translateY(-1px)}
+
     /* hero */
     .hero{position:relative;isolation:isolate;padding:96px 0 72px;overflow:hidden}
     .hero::before,.hero::after{content:"";position:absolute;inset:-20% -10%;z-index:-1;filter:blur(60px);opacity:.6}
@@ -32,18 +44,39 @@
     .lead{color:#b9c2d2;max-width:52ch}
     .panel{background:linear-gradient(180deg,#121326,#0d0e18);border:1px solid #1e2030;border-radius:20px;padding:1rem;box-shadow:0 30px 60px rgba(0,0,0,.35)}
     .hero-visual{aspect-ratio:4/3;border-radius:16px;border:1px solid #22233a;overflow:hidden;background:#0d0e18 url('https://i.postimg.cc/3RrPLL70/contract.jpg') center/cover no-repeat}
+
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
-    .stat{background:var(--panel);border:1px solid #1b1c2b;border-radius:14px;padding:1rem;text-align:center}
+    .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem;text-align:center}
     .stat b{font-size:1.3rem}
+
     /* sections */
     .section{padding:72px 0;border-top:1px solid #171828}
     .kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .card{background:var(--panel);border:1px solid #1b1c2b;border-radius:16px;padding:1rem}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1rem}
     .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .bot-shot{aspect-ratio:16/9;border-radius:16px;border:1px solid #1b1c2b;background:#0d0e18 url('BOT_PREVIEW.jpg') center/cover no-repeat}
+
+    /* Bot preview: SQUARE */
+    .bot-shot{aspect-ratio:1/1;border-radius:16px;border:1px solid var(--line);
+      background:#0d0e18 url('BOT_PREVIEW.jpg') center/cover no-repeat}
+
+    /* Flow diagram */
+    .flow{background:linear-gradient(180deg,#121326,#0d0e18);border:1px solid var(--line);border-radius:16px;padding:1.25rem}
+    .flow svg{width:100%;height:auto;display:block}
+
+    /* Tiny calculator */
+    .calc{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:.8rem}
+    .calc input{background:#121327;color:#e7e9ee;border:1px solid #26283a;border-radius:10px;padding:.55rem .7rem;min-width:110px}
+    .calc .pill{padding:.55rem .8rem;border-radius:999px;border:1px solid #26283a;background:#121327}
+
     /* footer */
     .footer{padding:48px 0;border-top:1px solid #171828;color:#9aa3b2;text-align:center}
-    @media (max-width:900px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.kgrid{grid-template-columns:1fr}.cols-2{grid-template-columns:1fr}}
+
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .kgrid{grid-template-columns:1fr}
+      .cols-2{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -52,6 +85,7 @@
   <nav>
     <div class="container nav-wrap">
       <div class="brand">
+        <!-- Ensure logo.png exists next to this file -->
         <img src="logo.png" alt="MicroFi" onerror="this.style.display='none'"/>
         <b>MicroFi</b>
       </div>
@@ -70,7 +104,7 @@
         <p class="lead">MicroFI rewards micro-influencers for creating valuable, insightful, and engaging content. The more useful and engaging your posts are, the more $MICRO tokens you earn.</p>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem">
           <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Start Earning</a>
-          <a class="btn secondary" href="#tokenomics" rel="noopener">View Tokenomics</a>
+          <a class="btn secondary" href="#flow" rel="noopener">How Rewards Work</a>
         </div>
         <div class="stats" id="stats">
           <div class="stat"><div>Creators joined</div><b data-to="12500">0</b></div>
@@ -94,67 +128,104 @@
     </div>
   </section>
 
-  <!-- TELEGRAM BOT PREVIEW -->
+  <!-- TELEGRAM BOT PREVIEW (SQUARE) -->
   <section class="section" id="bot">
     <div class="container">
       <h2 style="margin:0 0 .8rem">Telegram bot preview</h2>
       <div class="cols-2">
-        <!-- Replace BOT_PREVIEW.jpg with a real screenshot of your bot UI -->
+        <!-- Replace BOT_PREVIEW.jpg with a square screenshot of your bot UI -->
         <div class="bot-shot" title="MicroFi Bot Preview"></div>
         <div class="card">
           <h3>What you can do in the bot</h3>
           <ul>
             <li>Browse and join live campaigns</li>
             <li>Submit proof links and track approvals</li>
-            <li>Earn $MICRO (dynamic rewards)</li>
+            <li>Earn dynamic $MICRO rewards</li>
             <li>Invite friends with personal referral link</li>
             <li>View leaderboard & Social Card</li>
           </ul>
           <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
             <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Open bot</a>
-            <a class="btn secondary" href="#faq">FAQ</a>
+            <a class="btn secondary" href="#flow">Reward Flow</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TOKENOMICS -->
-  <section class="section" id="tokenomics">
+  <!-- $MICRO FLOW / “TOKENOMICS” -->
+  <section class="section" id="flow">
     <div class="container">
-      <h2 style="margin:0 0 .8rem">Tokenomics (draft)</h2>
-      <div class="kgrid">
-        <div class="card">
-          <h3>Supply</h3>
-          <p>Total: <b>1,000,000,000 $MICRO</b></p>
-          <p>Ticker: <b>MICRO</b></p>
-        </div>
-        <div class="card">
-          <h3>Distribution</h3>
-          <ul>
-            <li>Community Rewards: <b>45%</b></li>
-            <li>Ecosystem/Partnerships: <b>20%</b></li>
-            <li>Treasury: <b>15%</b></li>
-            <li>Team (vested): <b>15%</b></li>
-            <li>Liquidity & Market Making: <b>5%</b></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Emissions</h3>
-          <p>Campaign rewards adapt to Mindshare signals and proof quality. Seasonal allocations decay slightly to favor early contributors.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h2 style="margin:0 0 .8rem">How $MICRO flows</h2>
 
-  <!-- AIRDROP -->
-  <section class="section" id="airdrop">
-    <div class="container">
-      <h2 style="margin:0 0 .8rem">Airdrop (Season 0)</h2>
-      <div class="card">
-        <p><b>Overview.</b> A pool of $MICRO is allocated to early contributors who bootstrap the community.</p>
-        <p><b>How to qualify.</b> Connect X → join campaigns → publish engaging posts → invite quality creators → stay consistent weekly.</p>
-        <p><b>Distribution.</b> Periodic snapshots, rewards calculated at the end of each Season, and distributed after verification.</p>
+      <div class="flow" title="Client-funded pool → Telegram launch → Engagement → Mindshare rewards">
+        <!-- Responsive SVG flow diagram -->
+        <svg viewBox="0 0 1100 360" role="img" aria-label="Flow of $MICRO from clients to creators">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+            <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".35"/>
+            </filter>
+            <style>
+              .n{fill:#11121a;stroke:#1b1c2b;stroke-width:2;rx:14;ry:14;filter:url(#s)}
+              .t{fill:#e7e9ee;font:600 16px Inter,Arial}
+              .sm{fill:#b9c2d2;font:400 13px Inter,Arial}
+              .a{stroke:url(#g);stroke-width:3;marker-end:url(#m)}
+            </style>
+            <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse">
+              <path d="M0,0 L12,6 L0,12 z" fill="url(#g)"/>
+            </marker>
+          </defs>
+
+          <!-- Nodes -->
+          <rect class="n" x="30"  y="40"  width="270" height="90"/>
+          <text class="t" x="50" y="72">Client buys $MICRO</text>
+          <text class="sm" x="50" y="98">Amount scales with campaign days (min 10)</text>
+
+          <rect class="n" x="320" y="40"  width="300" height="90"/>
+          <text class="t" x="340" y="72">Lock campaign pool</text>
+          <text class="sm" x="340" y="98">Pool locked for selected duration</text>
+
+          <rect class="n" x="650" y="40"  width="200" height="90"/>
+          <text class="t" x="670" y="72">Launch on Telegram</text>
+          <text class="sm" x="670" y="98">Visible in MicroFi bot</text>
+
+          <rect class="n" x="890" y="40"  width="180" height="90"/>
+          <text class="t" x="905" y="72">Engagers & Raiders</text>
+          <text class="sm" x="905" y="98">Create posts, submit proofs</text>
+
+          <rect class="n" x="260" y="210" width="320" height="90"/>
+          <text class="t" x="280" y="242">Mindshare distribution</text>
+          <text class="sm" x="280" y="268">Approved proofs earn from the pool</text>
+
+          <rect class="n" x="640" y="210" width="280" height="90"/>
+          <text class="t" x="660" y="242">Seasonal settlement</text>
+          <text class="sm" x="660" y="268">Bonuses + referral payouts</text>
+
+          <!-- Arrows -->
+          <path class="a" d="M300,85 L320,85"/>
+          <path class="a" d="M620,85 L650,85"/>
+          <path class="a" d="M850,85 L890,85"/>
+          <path class="a" d="M980,130 C980,200 960,240 600,240"/>
+          <path class="a" d="M580,255 L640,255"/>
+        </svg>
+      </div>
+
+      <!-- Mini calculator -->
+      <div class="card" style="margin-top:1rem">
+        <h3 style="margin:.2rem 0 .4rem">Campaign pool estimator</h3>
+        <p class="sm" style="margin:.1rem 0 1rem">Clients lock a pool based on duration. Minimum <b>10 days</b>. Example below uses a daily rate you provide.</p>
+        <div class="calc">
+          <label>Days
+            <input id="days" type="number" min="10" value="14" />
+          </label>
+          <label>Daily rate (MICRO)
+            <input id="rate" type="number" min="0" value="5000" />
+          </label>
+          <span class="pill">Required pool: <b id="pool">70,000 MICRO</b></span>
+        </div>
       </div>
     </div>
   </section>
@@ -165,16 +236,16 @@
       <h2 style="margin:0 0 .8rem">FAQ</h2>
       <div class="card">
         <details open>
-          <summary><b>How do I start?</b></summary>
-          <p>Open the Telegram bot, connect your X handle, and generate your Social Card. Then pick a live campaign.</p>
+          <summary><b>What is MicroFi?</b></summary>
+          <p>MicroFi connects smaller, high-signal creators with projects. Campaigns are funded by client-locked $MICRO pools. Creators earn from those pools for approved, high-quality engagement.</p>
         </details>
         <details>
-          <summary><b>How are rewards calculated?</b></summary>
-          <p>Base score comes from your Social Card (followers × KOL quality). Dynamic multipliers apply for content type, diversity, timing, and a small random jitter. Admins can add bonuses for exceptional work.</p>
+          <summary><b>What decides my reward?</b></summary>
+          <p>Mindshare score: Social Card (followers & KOL quality) × content quality × diversity × timing, plus a tiny randomness to avoid gaming. Admins can add bonuses for exceptional posts.</p>
         </details>
         <details>
-          <summary><b>When can I withdraw?</b></summary>
-          <p>USDC swaps and off-ramp are planned. During beta, balances accrue and can be settled in batches.</p>
+          <summary><b>What if the pool runs out?</b></summary>
+          <p>The campaign auto-closes or the client tops up. All approved proofs remain recorded; final settlement occurs at season end.</p>
         </details>
       </div>
     </div>
@@ -216,6 +287,22 @@
         });
       }, {threshold:.6});
       els.forEach(el=>io.observe(el));
+    })();
+
+    // Pool estimator
+    (function(){
+      const fmt = n => Number(n||0).toLocaleString('en');
+      const days = document.getElementById('days');
+      const rate = document.getElementById('rate');
+      const out  = document.getElementById('pool');
+      function calc(){
+        const d = Math.max(10, +days.value||10);
+        const r = Math.max(0, +rate.value||0);
+        out.textContent = fmt(d*r) + ' MICRO';
+      }
+      days.addEventListener('input', calc);
+      rate.addEventListener('input', calc);
+      calc();
     })();
 
     // Early Beta bar memory
