@@ -4,78 +4,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MicroFi — Earn $MICRO for your influence</title>
-
-  <!-- Favicon (drop favicon.png next to this file or change the href) -->
   <link rel="icon" href="favicon.png" />
-
   <style>
-    :root{
-      --bg:#0b0b11; --panel:#0f1018; --text:#e7e9ee; --muted:#9aa3b2;
-      --brand:#7c3aed; --brand2:#06b6d4;
-    }
+    :root{ --bg:#0b0b11; --panel:#0f1018; --text:#e7e9ee; --muted:#9aa3b2; --brand:#7c3aed; --brand2:#06b6d4; }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);
-         font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Arial}
-    a{color:#c4b5fd;text-decoration:none}
-    a:hover{text-decoration:underline}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Arial}
+    a{color:#c4b5fd;text-decoration:none} a:hover{text-decoration:underline}
     .container{width:min(1100px,92%);margin:0 auto;padding:1rem}
-
-    /* Top nav */
+    /* nav */
     nav{position:sticky;top:0;z-index:5;backdrop-filter:saturate(180%) blur(8px);
-        background:linear-gradient(to bottom,rgba(11,11,17,.9),rgba(11,11,17,.6));
-        border-bottom:1px solid #1a1b2a}
+        background:linear-gradient(to bottom,rgba(11,11,17,.9),rgba(11,11,17,.6));border-bottom:1px solid #1a1b2a}
     .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
     .brand{display:flex;align-items:center;gap:.7rem}
     .brand img{width:40px;height:40px;border-radius:10px;object-fit:contain}
-    .brand b{letter-spacing:.2px}
-
-    .btn{display:inline-flex;gap:.55rem;align-items:center;padding:.75rem 1.05rem;
-         border-radius:12px;border:0;cursor:pointer;font-weight:700;color:#fff;
-         background:linear-gradient(135deg,var(--brand),var(--brand2));
-         box-shadow:0 10px 30px rgba(124,58,237,.25)}
+    .btn{display:inline-flex;gap:.55rem;align-items:center;padding:.75rem 1.05rem;border-radius:12px;border:0;cursor:pointer;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 10px 30px rgba(124,58,237,.25)}
     .btn.secondary{background:#1b1c28;border:1px solid #26283a;color:#e7e9ee;font-weight:600}
     .btn:hover{transform:translateY(-1px)}
-
-    /* Animated hero */
+    /* hero */
     .hero{position:relative;isolation:isolate;padding:96px 0 72px;overflow:hidden}
     .hero::before,.hero::after{content:"";position:absolute;inset:-20% -10%;z-index:-1;filter:blur(60px);opacity:.6}
-    .hero::before{background:
-      radial-gradient(800px 400px at 15% 0%,rgba(124,58,237,.28),transparent 60%),
-      radial-gradient(900px 500px at 85% 10%,rgba(6,182,212,.24),transparent 60%);
-      animation:float1 12s ease-in-out infinite alternate}
-    .hero::after{background:radial-gradient(600px 300px at 50% 100%,rgba(124,58,237,.15),transparent 60%);
-      animation:float2 14s ease-in-out infinite alternate}
+    .hero::before{background:radial-gradient(800px 400px at 15% 0%,rgba(124,58,237,.28),transparent 60%),radial-gradient(900px 500px at 85% 10%,rgba(6,182,212,.24),transparent 60%);animation:float1 12s ease-in-out infinite alternate}
+    .hero::after{background:radial-gradient(600px 300px at 50% 100%,rgba(124,58,237,.15),transparent 60%);animation:float2 14s ease-in-out infinite alternate}
     @keyframes float1{from{transform:translateY(-8px)}to{transform:translateY(8px)}}
     @keyframes float2{from{transform:translateX(-10px)}to{transform:translateX(10px)}}
-
     .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
     h1{font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.1;margin:.2rem 0 1rem}
     .lead{color:#b9c2d2;max-width:52ch}
-
-    .panel{background:linear-gradient(180deg,#121326,#0d0e18);
-           border:1px solid #1e2030;border-radius:20px;padding:1rem;
-           box-shadow:0 30px 60px rgba(0,0,0,.35)}
-    .hero-visual{aspect-ratio:4/3;border-radius:16px;border:1px solid #22233a;overflow:hidden;
-      background:#0d0e18 url('https://i.postimg.cc/3RrPLL70/contract.jpg') center/cover no-repeat}
-
+    .panel{background:linear-gradient(180deg,#121326,#0d0e18);border:1px solid #1e2030;border-radius:20px;padding:1rem;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+    .hero-visual{aspect-ratio:4/3;border-radius:16px;border:1px solid #22233a;overflow:hidden;background:#0d0e18 url('https://i.postimg.cc/3RrPLL70/contract.jpg') center/cover no-repeat}
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
     .stat{background:var(--panel);border:1px solid #1b1c2b;border-radius:14px;padding:1rem;text-align:center}
     .stat b{font-size:1.3rem}
-
+    /* sections */
     .section{padding:72px 0;border-top:1px solid #171828}
     .kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
     .card{background:var(--panel);border:1px solid #1b1c2b;border-radius:16px;padding:1rem}
-
-    .form-wrap{height:760px;border:1px solid #1b1c2b;border-radius:16px;overflow:hidden;background:#0f1018}
-    .form-wrap iframe{width:100%;height:100%;border:0}
-
+    .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .bot-shot{aspect-ratio:16/9;border-radius:16px;border:1px solid #1b1c2b;background:#0d0e18 url('BOT_PREVIEW.jpg') center/cover no-repeat}
+    /* footer */
     .footer{padding:48px 0;border-top:1px solid #171828;color:#9aa3b2;text-align:center}
-
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .stats{grid-template-columns:1fr 1fr}
-      .kgrid{grid-template-columns:1fr}
-    }
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.kgrid{grid-template-columns:1fr}.cols-2{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -84,7 +52,6 @@
   <nav>
     <div class="container nav-wrap">
       <div class="brand">
-        <!-- Put your logo file next to index.html as 'logo.png' -->
         <img src="logo.png" alt="MicroFi" onerror="this.style.display='none'"/>
         <b>MicroFi</b>
       </div>
@@ -101,22 +68,17 @@
       <div>
         <h1>Earn <span style="background:linear-gradient(90deg,#7c3aed,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent">$MICRO</span> for your influence</h1>
         <p class="lead">MicroFI rewards micro-influencers for creating valuable, insightful, and engaging content. The more useful and engaging your posts are, the more $MICRO tokens you earn.</p>
-
         <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem">
           <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Start Earning</a>
-          <a class="btn secondary" href="#form" rel="noopener">Apply to a Campaign</a>
+          <a class="btn secondary" href="#tokenomics" rel="noopener">View Tokenomics</a>
         </div>
-
         <div class="stats" id="stats">
           <div class="stat"><div>Creators joined</div><b data-to="12500">0</b></div>
           <div class="stat"><div>Proofs approved</div><b data-to="48210">0</b></div>
           <div class="stat"><div>$MICRO rewarded</div><b data-to="3250000">0</b></div>
         </div>
       </div>
-
-      <div class="panel">
-        <div class="hero-visual" role="img" aria-label="MicroFi preview"></div>
-      </div>
+      <div class="panel"><div class="hero-visual" role="img" aria-label="MicroFi preview"></div></div>
     </div>
   </header>
 
@@ -132,25 +94,99 @@
     </div>
   </section>
 
-  <!-- GOOGLE FORM -->
-  <section id="form" class="section">
+  <!-- TELEGRAM BOT PREVIEW -->
+  <section class="section" id="bot">
     <div class="container">
-      <h2 style="margin:0 0 .8rem">Submit your interest</h2>
-      <p style="color:#b9c2d2;margin:.2rem 0 1rem">Projects and creators can use the quick form below. We review entries during the public beta.</p>
-      <div class="form-wrap">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6y_outJh4XSY9jnF92bl2tcBGUGSZyZrg0SC4Dhujlf9_cQ/viewform?embedded=true">Loading…</iframe>
+      <h2 style="margin:0 0 .8rem">Telegram bot preview</h2>
+      <div class="cols-2">
+        <!-- Replace BOT_PREVIEW.jpg with a real screenshot of your bot UI -->
+        <div class="bot-shot" title="MicroFi Bot Preview"></div>
+        <div class="card">
+          <h3>What you can do in the bot</h3>
+          <ul>
+            <li>Browse and join live campaigns</li>
+            <li>Submit proof links and track approvals</li>
+            <li>Earn $MICRO (dynamic rewards)</li>
+            <li>Invite friends with personal referral link</li>
+            <li>View leaderboard & Social Card</li>
+          </ul>
+          <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Open bot</a>
+            <a class="btn secondary" href="#faq">FAQ</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- TOKENOMICS -->
+  <section class="section" id="tokenomics">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">Tokenomics (draft)</h2>
+      <div class="kgrid">
+        <div class="card">
+          <h3>Supply</h3>
+          <p>Total: <b>1,000,000,000 $MICRO</b></p>
+          <p>Ticker: <b>MICRO</b></p>
+        </div>
+        <div class="card">
+          <h3>Distribution</h3>
+          <ul>
+            <li>Community Rewards: <b>45%</b></li>
+            <li>Ecosystem/Partnerships: <b>20%</b></li>
+            <li>Treasury: <b>15%</b></li>
+            <li>Team (vested): <b>15%</b></li>
+            <li>Liquidity & Market Making: <b>5%</b></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Emissions</h3>
+          <p>Campaign rewards adapt to Mindshare signals and proof quality. Seasonal allocations decay slightly to favor early contributors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AIRDROP -->
+  <section class="section" id="airdrop">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">Airdrop (Season 0)</h2>
+      <div class="card">
+        <p><b>Overview.</b> A pool of $MICRO is allocated to early contributors who bootstrap the community.</p>
+        <p><b>How to qualify.</b> Connect X → join campaigns → publish engaging posts → invite quality creators → stay consistent weekly.</p>
+        <p><b>Distribution.</b> Periodic snapshots, rewards calculated at the end of each Season, and distributed after verification.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">FAQ</h2>
+      <div class="card">
+        <details open>
+          <summary><b>How do I start?</b></summary>
+          <p>Open the Telegram bot, connect your X handle, and generate your Social Card. Then pick a live campaign.</p>
+        </details>
+        <details>
+          <summary><b>How are rewards calculated?</b></summary>
+          <p>Base score comes from your Social Card (followers × KOL quality). Dynamic multipliers apply for content type, diversity, timing, and a small random jitter. Admins can add bonuses for exceptional work.</p>
+        </details>
+        <details>
+          <summary><b>When can I withdraw?</b></summary>
+          <p>USDC swaps and off-ramp are planned. During beta, balances accrue and can be settled in batches.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     © 2025 MicroFi •
     <a href="https://x.com/MicroFI_on" target="_blank" rel="noopener">Twitter</a> •
     <a href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Telegram</a>
   </footer>
 
-  <!-- Bottom beta bar (dismiss remembered per device) -->
+  <!-- Early Beta bar -->
   <div id="beta-bar" style="position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;align-items:center;gap:.9rem;padding:.9rem 1rem;background:linear-gradient(90deg, rgba(124,58,237,.95), rgba(6,182,212,.95));box-shadow:0 -8px 30px rgba(0,0,0,.35);color:#fff;font-weight:600">
     <span>🚧 MicroFi is in <b>Early Beta</b>. Expect rapid updates.</span>
     <a href="https://t.me/MicroFiBot" target="_blank" rel="noopener" style="background:#0b0b11;border-radius:12px;padding:.55rem .9rem;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.15)">Join the Telegram</a>
