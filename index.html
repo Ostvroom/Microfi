@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MicroFi — Earn $MICRO for your influence</title>
   <link rel="icon" href="favicon.png" />
+  <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ 
+      startOnLoad: true, 
+      theme: 'base', 
+      themeVariables: {
+        primaryColor: '#121326',
+        primaryTextColor: '#e7e9ee',
+        primaryBorderColor: '#1b1c2b',
+        lineColor: '#7c3aed',
+        fontFamily: 'Inter, Arial, sans-serif'
+      }
+    });
+  </script>
   <style>
     :root{
       --bg:#0b0b11; --panel:#0f1018; --text:#e7e9ee; --muted:#9aa3b2;
@@ -82,7 +96,7 @@
     .calc .pill{padding:.55rem .8rem;border-radius:999px;border:1px solid #26283a;background:#121327}
 
     /* footer */
-    .footer{padding:48px 0;border-top:1px solid #171828;color:#9aa3b2;text-align:center}
+    .footer{padding:48px ノート0;border-top:1px solid #171828;color:#9aa3b2;text-align:center}
 
     @media (max-width:900px){
       .grid{grid-template-columns:1fr}
@@ -191,61 +205,27 @@
     </div>
   </section>
 
-  <!-- $MICRO FLOW / TOKENOMICS (final arrows) -->
+  <!-- $MICRO FLOW / TOKENOMICS (Mermaid.js diagram) -->
   <section class="section" id="flow">
     <div class="container">
       <h2 style="margin:0 0 .8rem">How $MICRO flows</h2>
 
       <div class="flow">
-        <svg viewBox="0 0 1100 360" role="img" aria-label="Flow of $MICRO from clients to creators">
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/>
-            </linearGradient>
-            <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".35"/>
-            </filter>
-            <style>
-              .n{fill:#11121a;stroke:#1b1c2b;stroke-width:2;rx:14;ry:14;filter:url(#s)}
-              .t{fill:#e7e9ee;font:600 16px Inter,Arial}
-              .sm{fill:#b9c2d2;font:400 13px Inter,Arial}
-              .a{fill:none;stroke:url(#g);stroke-width:3;marker-end:url(#m)}
-            </style>
-            <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-              <path d="M0,0 L12,6 L0,12 z" fill="url(#g)"/>
-            </marker>
-          </defs>
-
-          <!-- Top row nodes -->
-          <rect class="n" x="30"  y="40"  width="270" height="90"/>
-          <text class="t" x="50" y="72">Client buys $MICRO</text>
-          <text class="sm" x="50" y="98">Amount scales with campaign days (min 10)</text>
-
-          <rect class="n" x="330" y="40"  width="290" height="90"/>
-          <text class="t" x="350" y="72">Lock campaign pool</text>
-          <text class="sm" x="350" y="98">Pool locked for selected duration</text>
-
-          <rect class="n" x="650" y="40"  width="220" height="90"/>
-          <text class="t" x="670" y="72">Launch on Telegram</text>
-          <text class="sm" x="670" y="98">Visible in MicroFi bot</text>
-
-          <rect class="n" x="910" y="40"  width="160" height="90"/>
-          <text class="t" x="930" y="72">Engagers & Raiders</text>
-          <text class="sm" x="930" y="98">Create posts, submit proofs</text>
-
-          <!-- Bottom row node -->
-          <rect class="n" x="270" y="210" width="330" height="90"/>
-          <text class="t" x="290" y="242">Mindshare distribution</text>
-          <text class="sm" x="290" y="268">Approved proofs earn from the pool</text>
-
-          <!-- Straight arrows top row -->
-          <path class="a" d="M300,85 L330,85"/>
-          <path class="a" d="M620,85 L650,85"/>
-          <path class="a" d="M870,85 L910,85"/>
-
-          <!-- Curve from Engagers to Mindshare -->
-          <path class="a" d="M990,130 C 1005,185 880,210 600,210"/>
-        </svg>
+        <div class="mermaid">
+          graph TD
+            A[Client buys $MICRO<br>Amount scales with campaign days] --> B[$MICRO pool locked<br>for selected duration]
+            B --> C[Campaign launches<br>on Telegram via MicroFi bot]
+            C --> D[Engagers & Raiders<br>create content, submit proofs]
+            D --> E[Approved proofs earn<br>rewards from $MICRO pool]
+            E --> F[Engagers stake $MICRO<br>for extra rewards, buy items,<br>or trade for USDC]
+            style A fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
+            style B fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
+            style C fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
+            style D fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
+            style E fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
+            style F fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
+            linkStyle 0,1,2,3,4 stroke:#7c3aed,stroke-width:3px
+        </div>
       </div>
 
       <!-- Mini calculator -->
