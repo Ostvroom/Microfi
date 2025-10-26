@@ -263,26 +263,59 @@
     </div>
   </section>
 
-  <!-- $MICRO FLOW / TOKENOMICS (Mermaid.js diagram) -->
+  <!-- $MICRO FLOW / TOKENOMICS (Fishbone Diagram) -->
   <section class="section" id="flow">
     <div class="container">
-      <h2 style="margin:0 0 .8rem">How $MICRO flows</h2>
+      <h2 style="margin:0 0 .8rem">How $MICRO flows - Campaign Engagement Analysis</h2>
+      <p class="lead" style="margin-bottom:1rem">Fishbone diagram showing causes of low engagement in MicroFi campaigns, based on workflow stages.</p>
 
       <div class="flow">
         <div class="mermaid">
-          graph TD
-            A[Client buys $MICRO<br>Amount scales with campaign days] --> B[$MICRO pool locked<br>for selected duration]
-            B --> C[Campaign launches<br>on Telegram via MicroFi bot]
-            C --> D[Engagers & Raiders<br>create content, submit proofs]
-            D --> E[Approved proofs earn<br>rewards from $MICRO pool]
-            E --> F[Engagers stake $MICRO<br>for extra rewards, buy items,<br>or trade for USDC]
-            style A fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
-            style B fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
-            style C fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
-            style D fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
-            style E fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
-            style F fill:#121326,stroke:#1b1c2b,stroke-width:2px,color:#e7e9ee
-            linkStyle 0,1,2,3,4 stroke:#7c3aed,stroke-width:3px
+          graph LR
+            %% Problem/Effect (Head of fish - right side)
+            E[Low Engagement in Campaigns<br/><small>Result: Poor mindshare & wasted $MICRO pools</small>]:::effect
+
+            %% Main categories (Major bones - branching leftward)
+            CS[Client Setup<br/>- Inadequate pool size<br/>- Short duration] -.-> E
+            PL[Platform Launch<br/>- Bot visibility issues<br/>- Poor Telegram integration] -.-> E
+            CP[Creator Participation<br/>- Low awareness of campaigns<br/>- Complex proof submission] -.-> E
+            PA[Proof Approval<br/>- Strict mindshare scoring<br/>- Slow admin review] -.-> E
+            RD[Reward Distribution<br/>- Uncompetitive $MICRO rates<br/>- Delayed payouts] -.-> E
+            EF[External Factors<br/>- Market volatility<br/>- Telegram algo changes] -.-> E
+
+            %% Sub-causes (Minor bones - deeper branching)
+            subgraph SubCS [" "]
+              CS1[Pool < min 10 days] -.-> CS
+              CS2[No scaling with days] -.-> CS
+            end
+            subgraph SubPL [" "]
+              PL1[Campaign not visible in bot] -.-> PL
+              PL2[Launch timing mismatches] -.-> PL
+            end
+            subgraph SubCP [" "]
+              CP1[Lack of creator incentives] -.-> CP
+              CP2[Difficult content guidelines] -.-> CP
+            end
+            subgraph SubPA [" "]
+              PA1[Biased social card scoring] -.-> PA
+              PA2[No bonuses for quality] -.-> PA
+            end
+            subgraph SubRD [" "]
+              RD1[Pool depletion too fast] -.-> RD
+              RD2[Unclear staking benefits] -.-> RD
+            end
+            subgraph SubEF [" "]
+              EF1[Low $MICRO liquidity] -.-> EF
+              EF2[Competition from other bots] -.-> EF
+            end
+
+            %% Styling for dark theme & branding
+            classDef effect fill:#ef4444,stroke:#dc2626,stroke-width:4px,color:#fff
+            classDef category fill:#1e40af,stroke:#7c3aed,stroke-width:2px,color:#e7e9ee
+            classDef subcause fill:#3b82f6,stroke:#06b6d4,stroke-width:1px,color:#e7e9ee
+            class CS,PL,CP,PA,RD,EF category
+            class CS1,CS2,PL1,PL2,CP1,CP2,PA1,PA2,RD1,RD2,EF1,EF2 subcause
+            linkStyle default stroke:#06b6d4,stroke-width:2px
         </div>
       </div>
 
