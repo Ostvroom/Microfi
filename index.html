@@ -3,8 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="MicroFi: Earn $MICRO tokens by creating engaging content as a micro-influencer. Join campaigns, submit proofs, and stake your rewards on Telegram." />
+  <meta property="og:title" content="MicroFi — Earn $MICRO for your influence" />
+  <meta property="og:description" content="MicroFi rewards micro-influencers for valuable content. Lock pools, launch campaigns, and earn dynamic $MICRO rewards." />
+  <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+  <meta property="og:url" content="https://microfi.xyz" />
   <title>MicroFi — Earn $MICRO for your influence</title>
   <link rel="icon" href="favicon.png" />
+  <link rel="canonical" href="https://microfi.xyz" />
   <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
   <script>
     mermaid.initialize({ 
@@ -42,7 +48,7 @@
     .btn{display:inline-flex;gap:.55rem;align-items:center;padding:.75rem 1.05rem;
          border-radius:12px;border:0;cursor:pointer;font-weight:700;color:#fff;
          background:linear-gradient(135deg,var(--brand),var(--brand2));
-         box-shadow:0 10px 30px rgba(124,58,237,.25)}
+         box-shadow:0 10px 30px rgba(124,58,237,.25);transition:transform .2s ease}
     .btn.secondary{background:#1b1c28;border:1px solid #26283a;color:#e7e9ee;font-weight:600}
     .btn:hover{transform:translateY(-1px)}
 
@@ -68,6 +74,26 @@
     .kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
     .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1rem}
     .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+    /* Roadmap */
+    .roadmap-timeline{display:flex;flex-direction:column;gap:2rem}
+    .roadmap-item{position:relative;display:flex;align-items:flex-start;gap:1rem;padding-left:2rem;border-left:3px solid var(--line)}
+    .roadmap-item::before{content:'';position:absolute;left:-6px;top:0;width:12px;height:12px;border-radius:50%;background:var(--brand)}
+    .roadmap-item.completed{border-left-color:var(--brand)}
+    .roadmap-item.completed::before{background:var(--brand2)}
+    .roadmap-date{font-weight:600;color:var(--brand);font-size:1.1rem;margin-bottom:.5rem}
+    .roadmap-desc{line-height:1.6}
+
+    /* Testimonials */
+    .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
+    .testimonial{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.5rem;text-align:center}
+    .testimonial img{width:60px;height:60px;border-radius:50%;object-fit:cover;margin:0 auto 1rem}
+    .testimonial cite{font-style:normal;color:var(--brand);font-weight:600}
+
+    /* Newsletter */
+    .newsletter{background:linear-gradient(135deg,var(--brand),var(--brand2));border-radius:20px;padding:2rem;text-align:center;color:#fff}
+    .newsletter input{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;padding:.75rem;width:100%;max-width:300px;margin:1rem 0}
+    .newsletter input::placeholder{color:rgba(255,255,255,.7)}
 
     /* Bot preview: SQUARE with centered overlay */
     .bot-shot{
@@ -96,13 +122,21 @@
     .calc .pill{padding:.55rem .8rem;border-radius:999px;border:1px solid #26283a;background:#121327}
 
     /* footer */
-    .footer{padding:48px ノート0;border-top:1px solid #171828;color:#9aa3b2;text-align:center}
+    .footer{padding:48px 0;border-top:1px solid #171828;color:#9aa3b2;text-align:center}
+    .footer .newsletter{margin-bottom:2rem}
+
+    /* Back to top */
+    #back-to-top{position:fixed;bottom:20px;right:20px;z-index:10;background:var(--brand);color:#fff;border:none;border-radius:50%;width:50px;height:50px;cursor:pointer;display:none;transition:opacity .3s}
+    #back-to-top:hover{opacity:.8}
 
     @media (max-width:900px){
       .grid{grid-template-columns:1fr}
       .stats{grid-template-columns:1fr 1fr}
       .kgrid{grid-template-columns:1fr}
       .cols-2{grid-template-columns:1fr}
+      .testimonials-grid{grid-template-columns:1fr}
+      .roadmap-timeline{gap:1.5rem;padding-left:1rem}
+      .roadmap-item{padding-left:1rem}
     }
   </style>
 </head>
@@ -112,12 +146,12 @@
   <nav>
     <div class="container nav-wrap">
       <div class="brand">
-        <img src="logo.png" alt="MicroFi" onerror="this.style.display='none'"/>
+        <img src="logo.png" alt="MicroFi Logo" onerror="this.style.display='none'"/>
         <b>MicroFi</b>
       </div>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-        <a class="btn secondary" href="https://x.com/MicroFI_on" target="_blank" rel="noopener">🐦 Follow on X</a>
-        <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">🚀 Open Telegram Bot</a>
+        <a class="btn secondary" href="https://x.com/MicroFI_on" target="_blank" rel="noopener" aria-label="Follow MicroFi on X">🐦 Follow on X</a>
+        <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener" aria-label="Open MicroFi Telegram Bot">🚀 Open Telegram Bot</a>
       </div>
     </div>
   </nav>
@@ -132,13 +166,13 @@
           <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Start Earning</a>
           <a class="btn secondary" href="#join" rel="noopener">Join campaign</a>
         </div>
-        <div class="stats" id="stats">
+        <div class="stats" id="stats" role="region" aria-label="Key Statistics">
           <div class="stat"><div>Creators joined</div><b data-to="12500">0</b></div>
           <div class="stat"><div>Proofs approved</div><b data-to="48210">0</b></div>
           <div class="stat"><div>$MICRO rewarded</div><b data-to="3250000">0</b></div>
         </div>
       </div>
-      <div class="panel"><div class="hero-visual" role="img" aria-label="MicroFi preview"></div></div>
+      <div class="panel"><div class="hero-visual" role="img" aria-label="MicroFi smart contract preview"></div></div>
     </div>
   </header>
 
@@ -147,21 +181,21 @@
     <div class="container">
       <h2 style="margin:0 0 .8rem">Join the current campaign</h2>
       <div class="card" style="max-width:600px;margin:auto;text-align:left">
-        <form id="joinForm" novalidate>
-          <label><b>Enter X @username</b></label><br/>
+        <form id="joinForm" novalidate aria-label="Join Campaign Form">
+          <label for="username"><b>Enter X @username</b></label><br/>
           <input type="text" id="username" required placeholder="@yourhandle"
             style="width:100%;margin:.5rem 0 1rem;background:#121327;color:#e7e9ee;
-                   border:1px solid #26283a;border-radius:10px;padding:.6rem"/>
+                   border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="username-help"/>
 
           <label style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem">
             <input type="checkbox" id="followed" style="accent-color:#7c3aed"/>
-            <span>Followed <a href="https://x.com/MicroFI_on" target="_blank">@MicroFI_on</a> and turned on notifications ✅</span>
+            <span>Followed <a href="https://x.com/MicroFI_on" target="_blank" rel="noopener">@MicroFI_on</a> and turned on notifications ✅</span>
           </label>
 
-          <label><b>Like + Retweet + Reply (drop link)</b></label><br/>
+          <label for="tweet"><b>Like + Retweet + Reply (drop link)</b></label><br/>
           <input type="url" id="tweet" required placeholder="https://x.com/you/status/..."
             style="width:100%;margin:.5rem 0 1.2rem;background:#121327;color:#e7e9ee;
-                   border:1px solid #26283a;border-radius:10px;padding:.6rem"/>
+                   border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="tweet-help"/>
 
           <button type="submit" class="btn" style="width:100%;justify-content:center">
             Submit & Join
@@ -172,6 +206,8 @@
             padding:.8rem;border-radius:12px;background:rgba(6,182,212,.1);color:#06b6d4">
           🎉 You’re in the list! Our team will verify your post soon.
         </div>
+        <p id="username-help" class="sr-only">Enter your X (Twitter) username without the @ symbol.</p>
+        <p id="tweet-help" class="sr-only">Provide the direct link to your tweet.</p>
       </div>
     </div>
   </section>
@@ -257,6 +293,95 @@
     </div>
   </section>
 
+  <!-- ROADMAP (New Section) -->
+  <section class="section" id="roadmap">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem;text-align:center">Roadmap</h2>
+      <div class="roadmap-timeline">
+        <div class="roadmap-item completed">
+          <div>
+            <div class="roadmap-date">Q3 2025</div>
+            <div class="roadmap-desc">
+              <strong>Core Launch:</strong> Telegram bot beta with campaign joining, proof submission, and mindshare scoring. Initial $MICRO airdrop to early engagers.
+            </div>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div>
+            <div class="roadmap-date">Q4 2025</div>
+            <div class="roadmap-desc">
+              <strong>Staking & Marketplace:</strong> Introduce $MICRO staking for APY boosts. Launch in-bot marketplace for exclusive NFTs and creator tools.
+            </div>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div>
+            <div class="roadmap-date">Q1 2026</div>
+            <div class="roadmap-desc">
+              <strong>Multi-Chain Expansion:</strong> Integrate Solana and Base for cross-chain campaigns. Add AI-powered content suggestions and automated proof validation.
+            </div>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div>
+            <div class="roadmap-date">Q2 2026</div>
+            <div class="roadmap-desc">
+              <strong>Global Partnerships:</strong> Collaborate with major DAOs and protocols for sponsored campaigns. Launch mobile app for seamless X integration.
+            </div>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div>
+            <div class="roadmap-date">Q3 2026+</div>
+            <div class="roadmap-desc">
+              <strong>Ecosystem Growth:</strong> Community governance for $MICRO, advanced analytics dashboard, and expansion to Discord/LinkedIn for B2B creators.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem;text-align:center">What creators are saying</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <img src="https://via.placeholder.com/60x60?text=JD" alt="John Doe avatar" />
+          <p>"MicroFi turned my casual posts into real earnings. The mindshare scoring is fair and motivating!"</p>
+          <cite>— John Doe, @TechGuru</cite>
+        </div>
+        <div class="testimonial">
+          <img src="https://via.placeholder.com/60x60?text=AS" alt="Alice Smith avatar" />
+          <p>"Staking $MICRO for extras has been a game-changer. Easy bot integration too."</p>
+          <cite>— Alice Smith, @CryptoAlice</cite>
+        </div>
+        <div class="testimonial">
+          <img src="https://via.placeholder.com/60x60?text=BM" alt="Bob Martin avatar" />
+          <p>"Joined 3 campaigns already—quick approvals and transparent rewards. Highly recommend!"</p>
+          <cite>— Bob Martin, @DeFiBob</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER SIGNUP -->
+  <section class="section">
+    <div class="container">
+      <div class="newsletter">
+        <h2 style="margin:0 0 1rem;color:#fff">Stay updated on $MICRO launches</h2>
+        <p style="margin:0 0 1.5rem;opacity:.9">Subscribe for beta access, campaign alerts, and exclusive airdrops.</p>
+        <form id="newsletterForm" novalidate aria-label="Newsletter Signup">
+          <input type="email" id="email" required placeholder="your@email.com" aria-describedby="email-help" />
+          <button type="submit" class="btn" style="margin-top:1rem;background:#fff;color:var(--brand);font-weight:700">Subscribe</button>
+        </form>
+        <div id="newsletterSuccess" style="display:none;margin-top:1rem;color:#fff;background:rgba(255,255,255,.1);padding:.5rem;border-radius:8px">Thanks for subscribing! Check your email.</div>
+        <p id="email-help" class="sr-only">Enter your email address to subscribe.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="section" id="faq">
     <div class="container">
@@ -279,19 +404,40 @@
   </section>
 
   <footer class="footer">
-    © 2025 MicroFi •
-    <a href="https://x.com/MicroFI_on" target="_blank" rel="noopener">Twitter</a> •
-    <a href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Telegram</a>
+    <div class="newsletter" style="max-width:500px;margin:0 auto 2rem">
+      <h3 style="margin:0 0 1rem">Get early access</h3>
+      <form id="footerNewsletter" novalidate aria-label="Footer Newsletter Signup">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit" class="btn secondary" style="margin-top:.5rem;width:100%">Sign up</button>
+      </form>
+    </div>
+    <p>© 2025 MicroFi •
+      <a href="https://x.com/MicroFI_on" target="_blank" rel="noopener">Twitter</a> •
+      <a href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Telegram</a> •
+      <a href="/privacy">Privacy</a> •
+      <a href="/terms">Terms</a>
+    </p>
   </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to top">↑</button>
 
   <!-- Early Beta bar -->
   <div id="beta-bar" style="position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;align-items:center;gap:.9rem;padding:.9rem 1rem;background:linear-gradient(90deg, rgba(124,58,237,.95), rgba(6,182,212,.95));box-shadow:0 -8px 30px rgba(0,0,0,.35);color:#fff;font-weight:600">
     <span>🚧 MicroFi is in <b>Early Beta</b>. Expect rapid updates.</span>
     <a href="https://t.me/MicroFiBot" target="_blank" rel="noopener" style="background:#0b0b11;border-radius:12px;padding:.55rem .9rem;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.15)">Join the Telegram</a>
-    <button id="beta-close" aria-label="dismiss" style="all:unset;cursor:pointer;padding:.3rem .6rem;border-radius:8px;background:rgba(255,255,255,.15)">✕</button>
+    <button id="beta-close" aria-label="Dismiss beta notice" style="all:unset;cursor:pointer;padding:.3rem .6rem;border-radius:8px;background:rgba(255,255,255,.15)">✕</button>
   </div>
 
   <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
     // Count-up animation
     (function(){
       const els = document.querySelectorAll('#stats [data-to]');
@@ -334,14 +480,46 @@
       }
     })();
 
-    // Join campaign mini-form
+    // Join campaign mini-form with validation
     (function(){
       const form = document.getElementById('joinForm');
       if(!form) return;
       form.addEventListener('submit', e => {
         e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const tweet = document.getElementById('tweet').value.trim();
+        const followed = document.getElementById('followed').checked;
+        if (!username || !tweet || !followed) {
+          alert('Please fill all fields and confirm you followed us.');
+          return;
+        }
+        if (!tweet.startsWith('https://x.com/') && !tweet.startsWith('https://twitter.com/')) {
+          alert('Please provide a valid X/Twitter link.');
+          return;
+        }
         form.style.display = 'none';
         document.getElementById('successMsg').style.display = 'block';
+      });
+    })();
+
+    // Newsletter form
+    (function() {
+      const forms = ['newsletterForm', 'footerNewsletter'];
+      forms.forEach(id => {
+        const form = document.getElementById(id);
+        if (!form) return;
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          const email = form.querySelector('input[type="email"]').value.trim();
+          if (!email || !/\S+@\S+\.\S+/.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+          }
+          // Simulate submission
+          const success = id === 'newsletterForm' ? document.getElementById('newsletterSuccess') : alert('Thanks for subscribing!');
+          if (success) success.style.display = 'block';
+          form.reset();
+        });
       });
     })();
 
@@ -357,6 +535,17 @@
           localStorage.setItem(key,'1');
         });
       } catch(e) {}
+    })();
+
+    // Back to top button
+    (function() {
+      const btn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     })();
   </script>
 </body>
