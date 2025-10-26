@@ -55,20 +55,21 @@
     .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1rem}
     .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 
-    /* Bot preview: SQUARE with overlay text */
+    /* Bot preview: SQUARE with centered overlay */
     .bot-shot{
       position:relative;aspect-ratio:1/1;border-radius:16px;border:1px solid var(--line);
       background:#0d0e18 url('BOT_PREVIEW.jpg') center/cover no-repeat;overflow:hidden
     }
     .bot-shot::after{
       content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg,rgba(11,11,17,0),rgba(11,11,17,.55));
+      background:radial-gradient(60% 60% at 50% 50%, rgba(11,11,17,.0), rgba(11,11,17,.55));
     }
     .bot-overlay{
-      position:absolute;inset:auto 0 0 0;padding:1rem 1.1rem;z-index:2;color:#fff;
-      display:flex;flex-direction:column;gap:.25rem
+      position:absolute;inset:0;z-index:2;color:#fff;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+      padding:1rem 1.1rem;gap:.25rem
     }
-    .bot-overlay h4{margin:0;font-size:1.05rem}
+    .bot-overlay h4{margin:0 0 .15rem;font-size:1.2rem}
     .bot-overlay p{margin:0;color:#dfe3ee}
 
     /* Flow diagram */
@@ -115,7 +116,7 @@
         <p class="lead">MicroFI rewards micro-influencers for creating valuable, insightful, and engaging content. The more useful and engaging your posts are, the more $MICRO tokens you earn.</p>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem">
           <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Start Earning</a>
-          <a class="btn secondary" href="#flow" rel="noopener">How Rewards Work</a>
+          <a class="btn secondary" href="#join" rel="noopener">Join campaign</a>
         </div>
         <div class="stats" id="stats">
           <div class="stat"><div>Creators joined</div><b data-to="12500">0</b></div>
@@ -127,129 +128,7 @@
     </div>
   </header>
 
-  <!-- TELEGRAM BOT PREVIEW (SQUARE) -->
-  <section class="section" id="bot">
-    <div class="container">
-      <h2 style="margin:0 0 .8rem">Telegram bot preview</h2>
-      <div class="cols-2">
-        <!-- Replace BOT_PREVIEW.jpg with a square screenshot -->
-        <div class="bot-shot">
-          <div class="bot-overlay">
-            <h4>MicroFi Bot</h4>
-            <p>Campaigns • Proofs • Mindshare • Referrals</p>
-          </div>
-        </div>
-        <div class="card">
-          <h3>What you can do in the bot</h3>
-          <ul>
-            <li>Browse and join live campaigns</li>
-            <li>Submit proof links and track approvals</li>
-            <li>Earn dynamic $MICRO rewards</li>
-            <li>Invite friends with personal referral link</li>
-            <li>View leaderboard & Social Card</li>
-          </ul>
-          <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
-            <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Open bot</a>
-            <a class="btn secondary" href="#join">Join campaign</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="section">
-    <div class="container">
-      <h2 style="margin:0 0 .8rem">How it works</h2>
-      <div class="kgrid">
-        <div class="card"><h3>1) Connect</h3><p>Open the Telegram bot, tap <b>Connect X</b>, and generate your Social Card.</p></div>
-        <div class="card"><h3>2) Create</h3><p>Join a campaign and post a thoughtful thread, video, or image.</p></div>
-        <div class="card"><h3>3) Earn</h3><p>Submit your post URL, get approved, and earn <b>$MICRO</b>. Rewards vary per proof.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- $MICRO FLOW / TOKENOMICS -->
-  <section class="section" id="flow">
-    <div class="container">
-      <h2 style="margin:0 0 .8rem">How $MICRO flows</h2>
-
-      <div class="flow" title="Client-funded pool → Telegram launch → Engagement → Mindshare rewards">
-        <!-- Clean, smooth SVG flow diagram -->
-        <svg viewBox="0 0 1100 360" role="img" aria-label="Flow of $MICRO from clients to creators">
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/>
-            </linearGradient>
-            <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".35"/>
-            </filter>
-            <style>
-              .n{fill:#11121a;stroke:#1b1c2b;stroke-width:2;rx:14;ry:14;filter:url(#s)}
-              .t{fill:#e7e9ee;font:600 16px Inter,Arial; text-anchor: middle;} /* Added text-anchor */
-              .sm{fill:#b9c2d2;font:400 13px Inter,Arial; text-anchor: middle;} /* Added text-anchor */
-              .a{fill:none;stroke:url(#g);stroke-width:3;marker-end:url(#m)}
-            </style>
-            <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-              <path d="M0,0 L12,6 L0,12 z" fill="url(#g)"/>
-            </marker>
-          </defs>
-
-          <!-- Top row -->
-          <rect class="n" x="30"  y="40"  width="270" height="90"/>
-          <text class="t" x="165" y="72">Client buys $MICRO</text>
-          <text class="sm" x="165" y="98">Amount scales with campaign days (min 10)</text>
-
-          <rect class="n" x="330" y="40"  width="290" height="90"/>
-          <text class="t" x="475" y="72">Lock campaign pool</text>
-          <text class="sm" x="475" y="98">Pool locked for selected duration</text>
-
-          <rect class="n" x="650" y="40"  width="220" height="90"/>
-          <text class="t" x="760" y="72">Launch on Telegram</text>
-          <text class="sm" x="760" y="98">Visible in MicroFi bot</text>
-
-          <rect class="n" x="910" y="40"  width="160" height="90"/>
-          <text class="t" x="990" y="72">Engagers & Raiders</text>
-          <text class="sm" x="990" y="98">Create posts, submit proofs</text>
-
-          <!-- Bottom row -->
-          <rect class="n" x="270" y="210" width="330" height="90"/>
-          <text class="t" x="435" y="242">Mindshare distribution</text>
-          <text class="sm" x="435" y="268">Approved proofs earn from the pool</text>
-
-          <rect class="n" x="640" y="210" width="300" height="90"/>
-          <text class="t" x="790" y="242">Seasonal settlement</text>
-          <text class="sm" x="790" y="268">Bonuses + referral payouts</text>
-
-          <!-- Smooth arrows -->
-          <path class="a" d="M300,85 L330,85"/> <!-- Adjusted arrow -->
-          <path class="a" d="M620,85 L650,85"/> <!-- Adjusted arrow -->
-          <path class="a" d="M870,85 L910,85"/> <!-- Adjusted arrow -->
-          <path class="a" d="M990,130 Q1050,170 940,210"/> <!-- Curve from Engagers to Seasonal Settlement -->
-          <path class="a" d="M640,255 L600,255"/> <!-- Arrow from Seasonal Settlement to Mindshare distribution -->
-          <path class="a" d="M270,255 L150,255 Q100,255 100,200 Q100,150 150,130 Q200,130 300,130"/> <!-- Arrow from Mindshare to Client buys -->
-
-        </svg>
-      </div>
-
-      <!-- Mini calculator -->
-      <div class="card" style="margin-top:1rem">
-        <h3 style="margin:.2rem 0 .4rem">Campaign pool estimator</h3>
-        <p class="sm" style="margin:.1rem 0 1rem">Clients lock a pool based on duration. Minimum <b>10 days</b>. Example below uses a daily rate you provide.</p>
-        <div class="calc">
-          <label>Days
-            <input id="days" type="number" min="10" value="14" />
-          </label>
-          <label>Daily rate (MICRO)
-            <input id="rate" type="number" min="0" value="5000" />
-          </label>
-          <span class="pill">Required pool: <b id="pool">70,000 MICRO</b></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- JOIN CAMPAIGN FORM -->
+  <!-- JOIN CAMPAIGN (moved up) -->
   <section class="section" id="join">
     <div class="container">
       <h2 style="margin:0 0 .8rem">Join the current campaign</h2>
@@ -279,6 +158,140 @@
             padding:.8rem;border-radius:12px;background:rgba(6,182,212,.1);color:#06b6d4">
           🎉 You’re in the list! Our team will verify your post soon.
         </div>
+      </div>
+    </div>
+  </section>
+    
+  // Join campaign mini-form
+    (function(){
+      const form = document.getElementById('joinForm');
+      if(!form) return;
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        form.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      });
+    })();
+  
+  <!-- TELEGRAM BOT PREVIEW (SQUARE centered text) -->
+  <section class="section" id="bot">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">Telegram bot preview</h2>
+      <div class="cols-2">
+        <!-- Replace BOT_PREVIEW.jpg with a square screenshot -->
+        <div class="bot-shot">
+          <div class="bot-overlay">
+            <h4>MicroFi Bot</h4>
+            <p>Campaigns • Proofs • Mindshare • Referrals</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>What you can do in the bot</h3>
+          <ul>
+            <li>Browse and join live campaigns</li>
+            <li>Submit proof links and track approvals</li>
+            <li>Earn dynamic $MICRO rewards</li>
+            <li>Invite friends with personal referral link</li>
+            <li>View leaderboard & Social Card</li>
+          </ul>
+          <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Open bot</a>
+            <a class="btn secondary" href="#flow">Reward Flow</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- $MICRO FLOW / TOKENOMICS -->
+  <section class="section" id="flow">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">How $MICRO flows</h2>
+
+      <div class="flow">
+        <!-- Clean arrows to the right targets -->
+        <svg viewBox="0 0 1100 360" role="img" aria-label="Flow of $MICRO from clients to creators">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+            <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".35"/>
+            </filter>
+            <style>
+              .n{fill:#11121a;stroke:#1b1c2b;stroke-width:2;rx:14;ry:14;filter:url(#s)}
+              .t{fill:#e7e9ee;font:600 16px Inter,Arial}
+              .sm{fill:#b9c2d2;font:400 13px Inter,Arial}
+              .a{fill:none;stroke:url(#g);stroke-width:3;marker-end:url(#m)}
+            </style>
+            <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M0,0 L12,6 L0,12 z" fill="url(#g)"/>
+            </marker>
+          </defs>
+
+          <!-- Top row nodes -->
+          <rect class="n" x="30"  y="40"  width="270" height="90"/>
+          <text class="t" x="50" y="72">Client buys $MICRO</text>
+          <text class="sm" x="50" y="98">Amount scales with campaign days (min 10)</text>
+
+          <rect class="n" x="330" y="40"  width="290" height="90"/>
+          <text class="t" x="350" y="72">Lock campaign pool</text>
+          <text class="sm" x="350" y="98">Pool locked for selected duration</text>
+
+          <rect class="n" x="650" y="40"  width="220" height="90"/>
+          <text class="t" x="670" y="72">Launch on Telegram</text>
+          <text class="sm" x="670" y="98">Visible in MicroFi bot</text>
+
+          <rect class="n" x="910" y="40"  width="160" height="90"/>
+          <text class="t" x="930" y="72">Engagers & Raiders</text>
+          <text class="sm" x="930" y="98">Create posts, submit proofs</text>
+
+          <!-- Bottom row nodes -->
+          <rect class="n" x="270" y="210" width="330" height="90"/>
+          <text class="t" x="290" y="242">Mindshare distribution</text>
+          <text class="sm" x="290" y="268">Approved proofs earn from the pool</text>
+
+          <rect class="n" x="640" y="210" width="300" height="90"/>
+          <text class="t" x="660" y="242">Seasonal settlement</text>
+          <text class="sm" x="660" y="268">Bonuses + referral payouts</text>
+
+          <!-- Straight arrows top row -->
+          <path class="a" d="M300,85 L330,85"/>
+          <path class="a" d="M620,85 L650,85"/>
+          <path class="a" d="M870,85 L910,85"/>
+
+          <!-- Curve down from Engagers to Mindshare -->
+          <path class="a" d="M990,130 C 1005,185 880,210 600,210"/>
+          <!-- Mindshare to Settlement -->
+          <path class="a" d="M600,255 L640,255"/>
+        </svg>
+      </div>
+
+      <!-- Mini calculator -->
+      <div class="card" style="margin-top:1rem">
+        <h3 style="margin:.2rem 0 .4rem">Campaign pool estimator</h3>
+        <p class="sm" style="margin:.1rem 0 1rem">Clients lock a pool based on duration. Minimum <b>10 days</b>. Example below uses a daily rate you provide.</p>
+        <div class="calc">
+          <label>Days
+            <input id="days" type="number" min="10" value="14" />
+          </label>
+          <label>Daily rate (MICRO)
+            <input id="rate" type="number" min="0" value="5000" />
+          </label>
+          <span class="pill">Required pool: <b id="pool">70,000 MICRO</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (moved below) -->
+  <section class="section">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">How it works</h2>
+      <div class="kgrid">
+        <div class="card"><h3>1) Connect</h3><p>Open the Telegram bot, tap <b>Connect X</b>, and generate your Social Card.</p></div>
+        <div class="card"><h3>2) Create</h3><p>Join a campaign and post a thoughtful thread, video, or image.</p></div>
+        <div class="card"><h3>3) Earn</h3><p>Submit your post URL, get approved, and earn <b>$MICRO</b>. Rewards vary per proof.</p></div>
       </div>
     </div>
   </section>
@@ -358,17 +371,6 @@
         rate.addEventListener('input', calc);
         calc();
       }
-    })();
-
-    // Join campaign mini-form
-    (function(){
-      const form = document.getElementById('joinForm');
-      if(!form) return;
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        form.style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
-      });
     })();
 
     // Early Beta bar memory
