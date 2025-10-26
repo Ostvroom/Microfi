@@ -83,6 +83,60 @@
     /* Flow image wrapper */
     .flow{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px}
     .flow img{width:100%;height:auto;display:block;border-radius:12px}
+  /* --- MICRO FLOW (image-free) --- */
+.flow-steps{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+.flow-rail{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:14px;
+  align-items:stretch;
+}
+.step{
+  position:relative;
+  background:#11121a;
+  border:1px solid #1b1c2b;
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+  min-height:92px;
+}
+.step b{font-size:14px}
+.step small{color:var(--muted)}
+/* arrow between steps (desktop) */
+.step:not(:last-child)::after{
+  content:"";
+  position:absolute; right:-12px; top:50%;
+  width:24px; height:2px; background:linear-gradient(90deg,#7c3aed,#06b6d4);
+  transform:translateY(-50%);
+}
+.step:not(:last-child)::before{
+  content:"";
+  position:absolute; right:-12px; top:50%;
+  border-left:8px solid #06b6d4;
+  border-top:6px solid transparent; border-bottom:6px solid transparent;
+  transform:translate(24px,-50%);
+}
+/* mobile: stack with vertical arrows */
+@media (max-width: 900px){
+  .flow-rail{grid-template-columns:1fr}
+  .step{min-height:auto}
+  .step:not(:last-child)::after{
+    width:2px; height:18px; left:50%; right:auto; top:auto; bottom:-10px;
+    transform:translateX(-50%); background:linear-gradient(180deg,#7c3aed,#06b6d4);
+  }
+  .step:not(:last-child)::before{
+    left:50%; right:auto; top:auto; bottom:-10px;
+    transform:translate(-50%,18px);
+    border-left:none;border-top:8px solid #06b6d4;border-right:6px solid transparent;border-left:6px solid transparent;
+  }
+}
 
     /* Tiny calculator */
     .calc{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:.8rem}
@@ -237,8 +291,35 @@
       <h2 style="margin:0 0 .8rem">$MICRO flow</h2>
       <div class="flow">
         <!-- Replace 'flow.png' with your diagram image -->
-        <img src="flow.png" alt="How $MICRO flows: client buys $MICRO → lock pool → launch on Telegram → engagers → mindshare → seasonal settlement" />
-      </div>
+        <div class="flow-steps" aria-label="$MICRO flow">
+  <div class="flow-rail">
+    <div class="step">
+      <b>Client buys $MICRO</b>
+      <small>Amount scales with campaign days (min 10)</small>
+    </div>
+    <div class="step">
+      <b>Lock campaign pool</b>
+      <small>Selected duration; funds reserved</small>
+    </div>
+    <div class="step">
+      <b>Launch on Telegram</b>
+      <small>Campaign goes live in MicroFi bot</small>
+    </div>
+    <div class="step">
+      <b>Engagers &amp; Raiders</b>
+      <small>Create posts, join raids, submit proofs</small>
+    </div>
+    <div class="step">
+      <b>Mindshare distribution</b>
+      <small>Approved proofs earn proportionally</small>
+    </div>
+    <div class="step">
+      <b>Seasonal settlement</b>
+      <small>Bonuses + referral payouts</small>
+    </div>
+  </div>
+</div>
+
 
       <!-- Mini calculator -->
       <div class="card" style="margin-top:1rem">
