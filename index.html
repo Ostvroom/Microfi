@@ -161,18 +161,7 @@
       </div>
     </div>
   </section>
-    
-  // Join campaign mini-form
-    (function(){
-      const form = document.getElementById('joinForm');
-      if(!form) return;
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        form.style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
-      });
-    })();
-  
+
   <!-- TELEGRAM BOT PREVIEW (SQUARE centered text) -->
   <section class="section" id="bot">
     <div class="container">
@@ -371,6 +360,17 @@
         rate.addEventListener('input', calc);
         calc();
       }
+    })();
+
+    // Join campaign mini-form
+    (function(){
+      const form = document.getElementById('joinForm');
+      if(!form) return;
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        form.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      });
     })();
 
     // Early Beta bar memory
