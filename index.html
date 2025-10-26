@@ -3,28 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="MicroFi: Earn $MICRO tokens by creating engaging content as a micro-influencer. Join campaigns, submit proofs, and stake your rewards on Telegram." />
+  <meta name="description" content="MicroFi: Earn $MICRO tokens by creating valuable content. Join campaigns, submit proofs and get rewarded." />
   <meta property="og:title" content="MicroFi — Earn $MICRO for your influence" />
-  <meta property="og:description" content="MicroFi rewards micro-influencers for valuable content. Lock pools, launch campaigns, and earn dynamic $MICRO rewards." />
-  <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
-  <meta property="og:url" content="https://microfi.xyz" />
+  <meta property="og:description" content="MicroFi rewards micro-influencers for valuable, insightful, and engaging content." />
+  <meta property="og:image" content="HERO_IMAGE.jpg" />
   <title>MicroFi — Earn $MICRO for your influence</title>
   <link rel="icon" href="favicon.png" />
-  <link rel="canonical" href="https://microfi.xyz" />
-  <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({ 
-      startOnLoad: true, 
-      theme: 'base', 
-      themeVariables: {
-        primaryColor: '#121326',
-        primaryTextColor: '#e7e9ee',
-        primaryBorderColor: '#1b1c2b',
-        lineColor: '#7c3aed',
-        fontFamily: 'Inter, Arial, sans-serif'
-      }
-    });
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#0b0b11; --panel:#0f1018; --text:#e7e9ee; --muted:#9aa3b2;
@@ -63,7 +51,7 @@
     h1{font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.1;margin:.2rem 0 1rem}
     .lead{color:#b9c2d2;max-width:52ch}
     .panel{background:linear-gradient(180deg,#121326,#0d0e18);border:1px solid #1e2030;border-radius:20px;padding:1rem;box-shadow:0 30px 60px rgba(0,0,0,.35)}
-    .hero-visual{aspect-ratio:4/3;border-radius:16px;border:1px solid #22233a;overflow:hidden;background:#0d0e18 url('https://i.postimg.cc/3RrPLL70/contract.jpg') center/cover no-repeat}
+    .hero-visual{aspect-ratio:4/3;border-radius:16px;border:1px solid #22233a;overflow:hidden;background:#0d0e18 url('HERO_IMAGE.jpg') center/cover no-repeat}
 
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
     .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem;text-align:center}
@@ -74,43 +62,6 @@
     .kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
     .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1rem}
     .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-
-    /* Enhanced Interactive Roadmap */
-    .roadmap-timeline{position:relative;display:flex;flex-direction:column;gap:1rem;padding:2rem 0;background:linear-gradient(180deg,rgba(18,19,38,.3),rgba(13,14,24,.3));border-radius:20px;border:1px solid var(--line)}
-    .roadmap-progress{margin-bottom:1.5rem;text-align:center}
-    .progress-bar{display:flex;align-items:center;gap:.5rem}
-    .progress-fill{background:linear-gradient(90deg,var(--brand),var(--brand2));height:8px;border-radius:4px;transition:width .5s ease;flex:1;position:relative;overflow:hidden}
-    .progress-bg{background:var(--line);height:8px;border-radius:4px;flex:1}
-    .roadmap-item{cursor:pointer;position:relative;display:flex;align-items:flex-start;gap:1.5rem;padding:1.5rem;border-radius:12px;background:var(--panel);transition:transform .3s ease, box-shadow .3s ease, max-height .3s ease;opacity:0;transform:translateY(20px);overflow:hidden;max-height:100px}
-    .roadmap-item.open{max-height:300px}
-    .roadmap-item.animate{opacity:1;transform:translateY(0)}
-    .roadmap-item:hover:not(.open){transform:translateX(10px);box-shadow:0 20px 40px rgba(124,58,237,.2)}
-    .roadmap-item.completed{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(6,182,212,.1))}
-    .roadmap-icon{position:absolute;left:-2rem;top:1.5rem;width:24px;height:24px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;transition:background .3s ease}
-    .roadmap-item.completed .roadmap-icon{background:var(--brand2)}
-    .roadmap-content{padding-left:2rem;flex:1}
-    .roadmap-header{display:flex;justify-content:space-between;align-items:center}
-    .roadmap-date{font-weight:600;color:var(--brand);font-size:1.2rem;display:flex;align-items:center;gap:.5rem}
-    .roadmap-toggle{transition:transform .3s ease}
-    .roadmap-item.open .roadmap-toggle{transform:rotate(180deg)}
-    .roadmap-desc{line-height:1.7;color:var(--muted);margin-top:.5rem}
-    .roadmap-desc strong{color:var(--text)}
-    .roadmap-details{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
-    .roadmap-item.open .roadmap-details{display:block}
-    .roadmap-details ul{list-style:none;padding:0;margin:0}
-    .roadmap-details li{position:relative;padding-left:1.5rem;margin-bottom:.5rem}
-    .roadmap-details li::before{content:'•';position:absolute;left:0;color:var(--brand);font-weight:bold}
-
-    /* Testimonials */
-    .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
-    .testimonial{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.5rem;text-align:center}
-    .testimonial img{width:60px;height:60px;border-radius:50%;object-fit:cover;margin:0 auto 1rem}
-    .testimonial cite{font-style:normal;color:var(--brand);font-weight:600}
-
-    /* Newsletter */
-    .newsletter{background:linear-gradient(135deg,var(--brand),var(--brand2));border-radius:20px;padding:2rem;text-align:center;color:#fff}
-    .newsletter input{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;padding:.75rem;width:100%;max-width:300px;margin:1rem 0}
-    .newsletter input::placeholder{color:rgba(255,255,255,.7)}
 
     /* Bot preview: SQUARE with centered overlay */
     .bot-shot{
@@ -129,27 +80,38 @@
     .bot-overlay h4{margin:0 0 .15rem;font-size:1.2rem}
     .bot-overlay p{margin:0;color:#dfe3ee}
 
-    /* Flow diagram */
-    graph TD
-    subgraph MicroFi Workflow
-        A[Client Purchases $MICRO]:::start --> B{Campaign Lock}:::decision
-        B -- Yes --> C[Campaign Launch]:::process
-        C --> D[Engagers & Raiders Participate]:::process
-        D --> E[Mindshare Distribution]:::process
-        E --> F{Engagers Stake $MICRO<br/>or Use / Trade}:::decision
-        F --> G[Additional Rewards / Items / USDC]:::end
-    end
-
-    classDef start fill:#7C3AED,stroke:#6D28D9,stroke-width:2px,color:#FFFFFF,font-weight:bold,border-radius:10px;
-    classDef process fill:#1E40AF,stroke:#1D4ED8,stroke-width:2px,color:#E7E9EE;
-    classDef decision fill:#EF4444,stroke:#DC2626,stroke-width:2px,color:#FFFFFF,font-weight:bold,border-radius:50%;
-    classDef end fill:#06B6D4,stroke:#0891B2,stroke-width:2px,color:#FFFFFF,font-weight:bold,border-radius:10px;
-    linkStyle default stroke:#A78BFA,stroke-width:2px;
+    /* Flow image wrapper */
+    .flow{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px}
+    .flow img{width:100%;height:auto;display:block;border-radius:12px}
 
     /* Tiny calculator */
     .calc{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:.8rem}
     .calc input{background:#121327;color:#e7e9ee;border:1px solid #26283a;border-radius:10px;padding:.55rem .7rem;min-width:110px}
     .calc .pill{padding:.55rem .8rem;border-radius:999px;border:1px solid #26283a;background:#121327}
+
+    /* Roadmap */
+    .roadmap-timeline{position:relative;display:flex;flex-direction:column;gap:1rem;padding:2rem 0;background:linear-gradient(180deg,rgba(18,19,38,.3),rgba(13,14,24,.3));border-radius:20px;border:1px solid var(--line)}
+    .roadmap-item{cursor:pointer;position:relative;display:flex;align-items:flex-start;gap:1.5rem;padding:1.5rem;border-radius:12px;background:var(--panel);transition:transform .3s ease,box-shadow .3s ease,max-height .3s ease;opacity:0;transform:translateY(20px);overflow:hidden;max-height:96px}
+    .roadmap-item.open{max-height:320px}
+    .roadmap-item.animate{opacity:1;transform:translateY(0)}
+    .roadmap-item:hover:not(.open){transform:translateX(10px);box-shadow:0 20px 40px rgba(124,58,237,.2)}
+    .roadmap-icon{position:absolute;left:-2rem;top:1.5rem;width:24px;height:24px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold}
+    .roadmap-content{padding-left:2rem;flex:1}
+    .roadmap-header{display:flex;justify-content:space-between;align-items:center}
+    .roadmap-date{font-weight:600;color:var(--brand);font-size:1.2rem;display:flex;align-items:center;gap:.5rem}
+    .roadmap-toggle{transition:transform .3s ease}
+    .roadmap-item.open .roadmap-toggle{transform:rotate(180deg)}
+    .roadmap-desc{line-height:1.7;color:var(--muted);margin-top:.5rem}
+    .roadmap-details{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+    .roadmap-item.open .roadmap-details{display:block}
+    .roadmap-details ul{list-style:none;padding:0;margin:0}
+    .roadmap-details li{position:relative;padding-left:1.5rem;margin-bottom:.5rem}
+    .roadmap-details li::before{content:'•';position:absolute;left:0;color:var(--brand);font-weight:bold}
+
+    /* Newsletter */
+    .newsletter{background:linear-gradient(135deg,var(--brand),var(--brand2));border-radius:20px;padding:2rem;text-align:center;color:#fff}
+    .newsletter input{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;padding:.75rem;width:100%;max-width:300px;margin:1rem 0}
+    .newsletter input::placeholder{color:rgba(255,255,255,.7)}
 
     /* footer */
     .footer{padding:48px 0;border-top:1px solid #171828;color:#9aa3b2;text-align:center}
@@ -157,7 +119,7 @@
 
     /* Back to top */
     #back-to-top{position:fixed;bottom:20px;right:20px;z-index:10;background:var(--brand);color:#fff;border:none;border-radius:50%;width:50px;height:50px;cursor:pointer;display:none;transition:opacity .3s}
-    #back-to-top:hover{opacity:.8}
+    #back-to-top:hover{opacity:.85}
 
     @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     @media (max-width:900px){
@@ -165,10 +127,8 @@
       .stats{grid-template-columns:1fr 1fr}
       .kgrid{grid-template-columns:1fr}
       .cols-2{grid-template-columns:1fr}
-      .testimonials-grid{grid-template-columns:1fr}
-      .roadmap-timeline{gap:1rem;padding:1rem}
-      .roadmap-item{flex-direction:column;align-items:flex-start;padding:1rem;gap:1rem;max-height:80px}
-      .roadmap-item.open{max-height:400px}
+      .roadmap-item{flex-direction:column;align-items:flex-start;padding:1rem;gap:1rem;max-height:90px}
+      .roadmap-item.open{max-height:420px}
       .roadmap-icon{left:auto;top:auto;position:relative;margin-bottom:1rem}
       .roadmap-content{padding-left:0;width:100%}
       .roadmap-item.animate{animation:fadeInUp .6s ease forwards}
@@ -196,7 +156,7 @@
     <div class="container grid">
       <div>
         <h1>Earn <span style="background:linear-gradient(90deg,#7c3aed,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent">$MICRO</span> for your influence</h1>
-        <p class="lead">MicroFI rewards micro-influencers for creating valuable, insightful, and engaging content. The more useful and engaging your posts are, the more $MICRO tokens you earn.</p>
+        <p class="lead">MicroFI rewards micro-influencers for creating valuable, insightful, and engaging content. The more useful and engaging your posts are, the more <b>$MICRO</b> you earn.</p>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem">
           <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Start Earning</a>
           <a class="btn secondary" href="#join" rel="noopener">Join campaign</a>
@@ -207,7 +167,7 @@
           <div class="stat"><div>$MICRO rewarded</div><b data-to="3250000">0</b></div>
         </div>
       </div>
-      <div class="panel"><div class="hero-visual" role="img" aria-label="MicroFi smart contract preview"></div></div>
+      <div class="panel"><div class="hero-visual" role="img" aria-label="MicroFi banner"></div></div>
     </div>
   </header>
 
@@ -219,8 +179,7 @@
         <form id="joinForm" novalidate aria-label="Join Campaign Form">
           <label for="username"><b>Enter X @username</b></label><br/>
           <input type="text" id="username" required placeholder="@yourhandle"
-            style="width:100%;margin:.5rem 0 1rem;background:#121327;color:#e7e9ee;
-                   border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="username-help"/>
+            style="width:100%;margin:.5rem 0 1rem;background:#121327;color:#e7e9ee;border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="username-help"/>
 
           <label style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem">
             <input type="checkbox" id="followed" style="accent-color:#7c3aed"/>
@@ -229,16 +188,12 @@
 
           <label for="tweet"><b>Like + Retweet + Reply (drop link)</b></label><br/>
           <input type="url" id="tweet" required placeholder="https://x.com/you/status/..."
-            style="width:100%;margin:.5rem 0 1.2rem;background:#121327;color:#e7e9ee;
-                   border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="tweet-help"/>
+            style="width:100%;margin:.5rem 0 1.2rem;background:#121327;color:#e7e9ee;border:1px solid #26283a;border-radius:10px;padding:.6rem" aria-describedby="tweet-help"/>
 
-          <button type="submit" class="btn" style="width:100%;justify-content:center">
-            Submit & Join
-          </button>
+          <button type="submit" class="btn" style="width:100%;justify-content:center">Submit & Join</button>
         </form>
 
-        <div id="successMsg" style="display:none;text-align:center;margin-top:1rem;
-            padding:.8rem;border-radius:12px;background:rgba(6,182,212,.1);color:#06b6d4">
+        <div id="successMsg" style="display:none;text-align:center;margin-top:1rem;padding:.8rem;border-radius:12px;background:rgba(6,182,212,.1);color:#06b6d4">
           🎉 You’re in the list! Our team will verify your post soon.
         </div>
         <p id="username-help" class="sr-only">Enter your X (Twitter) username without the @ symbol.</p>
@@ -276,225 +231,19 @@
     </div>
   </section>
 
-  <!-- $MICRO FLOW / TOKENOMICS (Flowchart) -->
- <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="MicroFi: A simple flow diagram showing the journey of $MICRO tokens within the MicroFi ecosystem." />
-  <title>How $MICRO flows – MicroFi Workflow</title>
-  <style>
-    :root {
-      --bg-color: #2c2c38;
-      --purple: #c084fc;
-      --purple-dark: #a855f7;
-      --red: #f87171;
-      --red-dark: #ef4444;
-      --blue: #60a5fa;
-      --blue-dark: #3b82f6;
-      --cyan: #22d3ee;
-      --cyan-dark: #06b6d4;
-      --text-color: #ffffff;
-      --arrow-color: #93c5fd;
-      --font-family: 'Inter', sans-serif;
-    }
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: var(--font-family);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 2rem;
-      box-sizing: border-box;
-    }
-    .workflow-container {
-      width: 100%;
-      max-width: 900px;
-      position: relative;
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin: 0 0 0.5rem 0;
-    }
-    p {
-      font-size: 1.1rem;
-      color: #d1d5db;
-    }
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4, auto);
-      gap: 2rem 3rem;
-      align-items: center;
-    }
-    .flow-node {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem 1.5rem;
-      font-weight: bold;
-      position: relative;
-    }
-    .flow-node.purple {
-      background-color: var(--purple);
-      border: 2px solid var(--purple-dark);
-      border-radius: 16px;
-      grid-column: 1 / 3;
-      grid-row: 1;
-    }
-    .flow-node.red {
-      background-color: var(--red);
-      border: 2px solid var(--red-dark);
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-    }
-    .flow-node.blue {
-      background-color: var(--blue);
-      border: 2px solid var(--blue-dark);
-      border-radius: 16px;
-    }
-    .flow-node.cyan {
-      background-color: var(--cyan);
-      border: 2px solid var(--cyan-dark);
-      border-radius: 16px;
-    }
-    .flow-node span {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: normal;
-      margin-top: 4px;
-    }
-    #client-purchase { grid-column: 1 / 2; grid-row: 1; }
-    #campaign-lock-1 { grid-column: 2 / 3; grid-row: 1; }
-    #campaign-lock-2 { grid-column: 1 / 2; grid-row: 3; }
-    #campaign-launch { grid-column: 2 / 4; grid-row: 2; padding: 0.8rem 1.5rem; }
-    #engagers-participate { grid-column: 2 / 3; grid-row: 3; }
-    #mindshare { grid-column: 3 / 4; grid-row: 3; }
-    #engagers-stake { grid-column: 2 / 4; grid-row: 4; }
-    #additional-rewards { grid-column: 3 / 5; grid-row: 5; }
-
-    /* Arrows */
-    .arrow {
-      position: absolute;
-      background-color: var(--arrow-color);
-      z-index: -1;
-    }
-    .arrow.right { width: 3rem; height: 4px; }
-    .arrow.down { width: 4px; height: 100%; }
-    .arrow.corner-down-right { width: 4px; height: 100%; border-bottom: 4px solid var(--arrow-color); border-right: 4px solid var(--arrow-color); }
-
-    /* Arrow Positioning */
-    #client-purchase::after { content: ''; position: absolute; right: -3rem; top: 50%; transform: translateY(-50%); width: 3rem; height: 4px; background-color: var(--arrow-color); }
-    #campaign-lock-1::after { content: ''; position: absolute; right: 50%; top: 100%; transform: translateX(50%); width: 4px; height: calc(2rem + 30px); background-color: var(--arrow-color); }
-    #campaign-launch::after { content: ''; position: absolute; right: -1.75rem; top: 50%; transform: translateY(-50%); width: 1.75rem; height: 4px; background-color: var(--arrow-color); }
-    #client-purchase > .down-arrow { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); width: 4px; height: 6rem; background-color: var(--arrow-color); }
-    #client-purchase > .corner-arrow { position: absolute; left: 50%; top: calc(100% + 6rem); transform: translateX(-50%); width: 7rem; height: 4px; background-color: var(--arrow-color); }
-
-    #campaign-lock-2::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); width: 3rem; height: 4px; background-color: var(--arrow-color); }
-    #engagers-participate::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); width: 3rem; height: 4px; background-color: var(--arrow-color); }
-    #mindshare > .down-arrow { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); width: 4px; height: 4rem; background-color: var(--arrow-color); }
-    #mindshare > .corner-arrow { position: absolute; left: calc(50% - 5rem); top: calc(100% + 4rem); transform: translateX(-50%); width: 5rem; height: 4px; background-color: var(--arrow-color); }
-
-    #engagers-stake::after { content: ''; position: absolute; right: 50%; top: 100%; transform: translateX(50%); width: 4px; height: 2rem; background-color: var(--arrow-color); }
-    .final-arrow-leg1 { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); width: 4px; height: 2rem; background-color: var(--arrow-color); }
-    .final-arrow-leg2 { position: absolute; left: calc(50% - 8rem); top: calc(100% + 2rem); width: 16rem; height: 4px; background-color: var(--arrow-color); }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      body { padding: 1rem; }
-      h1 { font-size: 2rem; }
-      .flow-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 3rem 1rem;
-        justify-items: center;
-      }
-      .flow-node, .flow-node.purple, .flow-node.red, .flow-node.blue, .flow-node.cyan {
-        grid-column: auto;
-        grid-row: auto;
-        width: 80%;
-        max-width: 300px;
-      }
-       .flow-node.red { width: 100px; height: 100px; }
-      .arrow, [class*="::after"], [class*="> ."] { display: none; /* Hide complex arrows on mobile */ }
-      /* Simple downward arrows for mobile */
-      .flow-node:not(:last-child)::before {
-        content: '↓';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 2rem;
-        color: var(--arrow-color);
-        margin-top: 0.5rem;
-      }
-       #campaign-lock-2::before, #engagers-participate::before { content: none; } /* Hide arrows where flow is not straight down */
-    }
-
-  </style>
-</head>
-<body>
-
-  <div class="workflow-container">
-    <div class="header">
-      <h1>How $MICRO flows – MicroFi Workflow</h1>
-      <p>A simple flow diagram showing the journey of $MICRO tokens within MicroFi ecosytem.</p>
-    </div>
-
-    <div class="flow-grid">
-
-      <div id="client-purchase" class="flow-node purple">
-        Client Purchases $MICRO
-        <span>Amount scales with campaign duration</span>
-        <div class="down-arrow"></div>
-        <div class="corner-arrow"></div>
+  <!-- $MICRO FLOW (use your static image) -->
+  <section class="section" id="flow">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">$MICRO flow</h2>
+      <div class="flow">
+        <!-- Replace 'flow.png' with your diagram image -->
+        <img src="flow.png" alt="How $MICRO flows: client buys $MICRO → lock pool → launch on Telegram → engagers → mindshare → seasonal settlement" />
       </div>
 
-      <div id="campaign-lock-1" class="flow-node red">Campaign Lock</div>
-
-      <div id="campaign-launch" class="flow-node blue">
-        Campaign Launch
-        <span>$MICRO locked for duration</span>
-      </div>
-
-      <div id="campaign-lock-2" class="flow-node red">Campaign Lock</div>
-
-      <div id="engagers-participate" class="flow-node blue">Engagers & Raiders Participate</div>
-
-      <div id="mindshare" class="flow-node red">
-        Mindshare Distribution
-        <div class="down-arrow"></div>
-        <div class="corner-arrow"></div>
-      </div>
-
-      <div id="engagers-stake" class="flow-node blue">
-        Engagers Stake $MICRO or Use / Trade
-        <div class="final-arrow-leg1"></div>
-        <div class="final-arrow-leg2"></div>
-      </div>
-
-      <div id="additional-rewards" class="flow-node cyan">Additional Rewards / Items / USC</div>
-
-    </div>
-  </div>
-
-</body>
-</html>
       <!-- Mini calculator -->
       <div class="card" style="margin-top:1rem">
         <h3 style="margin:.2rem 0 .4rem">Campaign pool estimator</h3>
-        <p class="sm" style="margin:.1rem 0 1rem">Clients lock a pool based on duration. Minimum <b>10 days</b>. Example below uses a daily rate you provide.</p>
+        <p class="sm" style="margin:.1rem 0 1rem">Clients lock a pool based on duration. Minimum <b>10 days</b>. Enter a daily rate you plan to use.</p>
         <div class="calc">
           <label>Days
             <input id="days" type="number" min="10" value="14" />
@@ -520,38 +269,29 @@
     </div>
   </section>
 
-  <!-- INTERACTIVE ROADMAP -->
+  <!-- ROADMAP -->
   <section class="section" id="roadmap">
     <div class="container">
       <h2 style="margin:0 0 .8rem;text-align:center">Roadmap</h2>
       <div class="roadmap-timeline">
-        <div class="roadmap-progress">
-          <p style="margin:0 0 .5rem;font-weight:600">Progress: 20% Complete</p>
-          <div class="progress-bar">
-            <div class="progress-bg">
-              <div class="progress-fill" style="width:20%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="roadmap-item completed animate" style="animation-delay:0.1s" onclick="toggleRoadmap(this)">
+        <div class="roadmap-item animate" style="animation-delay:0.1s" onclick="toggleRoadmap(this)">
           <div class="roadmap-icon">1</div>
           <div class="roadmap-content">
             <div class="roadmap-header">
               <div class="roadmap-date">Q3 2025 <span>🚀</span></div>
               <span class="roadmap-toggle" style="font-size:1.2rem">▼</span>
             </div>
-            <div class="roadmap-desc">
-              <strong>Core Launch:</strong> Telegram bot beta with campaign joining, proof submission, and mindshare scoring. Initial $MICRO airdrop to early engagers.
-            </div>
+            <div class="roadmap-desc"><strong>Core Launch:</strong> Telegram bot beta with campaigns, proofs, and mindshare scoring. Initial airdrop to early users.</div>
             <div class="roadmap-details">
               <ul>
-                <li>Deploy smart contracts on Ethereum</li>
-                <li>Launch beta bot with 100+ testers</li>
-                <li>Airdrop 1M $MICRO to first 1K users</li>
+                <li>Deploy contracts</li>
+                <li>Launch beta with 100+ testers</li>
+                <li>Airdrop 1M $MICRO</li>
               </ul>
             </div>
           </div>
         </div>
+
         <div class="roadmap-item animate" style="animation-delay:0.2s" onclick="toggleRoadmap(this)">
           <div class="roadmap-icon">2</div>
           <div class="roadmap-content">
@@ -559,18 +299,17 @@
               <div class="roadmap-date">Q4 2025 <span>🔒</span></div>
               <span class="roadmap-toggle" style="font-size:1.2rem">▼</span>
             </div>
-            <div class="roadmap-desc">
-              <strong>Staking & Marketplace:</strong> Introduce $MICRO staking for APY boosts. Launch in-bot marketplace for exclusive NFTs and creator tools.
-            </div>
+            <div class="roadmap-desc"><strong>Staking & Marketplace:</strong> $MICRO staking for boosts. In-bot marketplace for creator tools.</div>
             <div class="roadmap-details">
               <ul>
-                <li>Implement staking with 10-20% APY</li>
-                <li>Partner with 5 NFT artists for exclusives</li>
-                <li>Integrate USDC/USDT trading pairs</li>
+                <li>Staking with APY</li>
+                <li>Creator marketplace</li>
+                <li>USDC/USDT pairs</li>
               </ul>
             </div>
           </div>
         </div>
+
         <div class="roadmap-item animate" style="animation-delay:0.3s" onclick="toggleRoadmap(this)">
           <div class="roadmap-icon">3</div>
           <div class="roadmap-content">
@@ -578,56 +317,17 @@
               <div class="roadmap-date">Q1 2026 <span>⛓️</span></div>
               <span class="roadmap-toggle" style="font-size:1.2rem">▼</span>
             </div>
-            <div class="roadmap-desc">
-              <strong>Multi-Chain Expansion:</strong> Integrate Solana and Base for cross-chain campaigns. Add AI-powered content suggestions and automated proof validation.
-            </div>
+            <div class="roadmap-desc"><strong>Multi-Chain:</strong> Solana/Base support, AI suggestions, automated proof validation.</div>
             <div class="roadmap-details">
               <ul>
-                <li>Bridge $MICRO to Solana/Base</li>
-                <li>Deploy AI model for content scoring</li>
-                <li>Automate 80% of proof reviews</li>
+                <li>Bridge to Solana/Base</li>
+                <li>AI content scorer</li>
+                <li>Automate reviews</li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="roadmap-item animate" style="animation-delay:0.4s" onclick="toggleRoadmap(this)">
-          <div class="roadmap-icon">4</div>
-          <div class="roadmap-content">
-            <div class="roadmap-header">
-              <div class="roadmap-date">Q2 2026 <span>🤝</span></div>
-              <span class="roadmap-toggle" style="font-size:1.2rem">▼</span>
-            </div>
-            <div class="roadmap-desc">
-              <strong>Global Partnerships:</strong> Collaborate with major DAOs and protocols for sponsored campaigns. Launch mobile app for seamless X integration.
-            </div>
-            <div class="roadmap-details">
-              <ul>
-                <li>Secure 10+ DAO partnerships</li>
-                <li>Release iOS/Android apps</li>
-                <li>Integrate with Twitter API v2</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="roadmap-item animate" style="animation-delay:0.5s" onclick="toggleRoadmap(this)">
-          <div class="roadmap-icon">5</div>
-          <div class="roadmap-content">
-            <div class="roadmap-header">
-              <div class="roadmap-date">Q3 2026+ <span>🌍</span></div>
-              <span class="roadmap-toggle" style="font-size:1.2rem">▼</span>
-            </div>
-            <div class="roadmap-desc">
-              <strong>Ecosystem Growth:</strong> Community governance for $MICRO, advanced analytics dashboard, and expansion to Discord/LinkedIn for B2B creators.
-            </div>
-            <div class="roadmap-details">
-              <ul>
-                <li>Launch $MICRO DAO voting</li>
-                <li>Build analytics with 50+ metrics</li>
-                <li>Expand to 3+ social platforms</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -636,21 +336,18 @@
   <section class="section">
     <div class="container">
       <h2 style="margin:0 0 .8rem;text-align:center">What creators are saying</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/60x60?text=JD" alt="John Doe avatar" />
+      <div class="kgrid">
+        <div class="card">
           <p>"MicroFi turned my casual posts into real earnings. The mindshare scoring is fair and motivating!"</p>
-          <cite>— John Doe, @TechGuru</cite>
+          <p style="color:var(--muted)">— John Doe, @TechGuru</p>
         </div>
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/60x60?text=AS" alt="Alice Smith avatar" />
+        <div class="card">
           <p>"Staking $MICRO for extras has been a game-changer. Easy bot integration too."</p>
-          <cite>— Alice Smith, @CryptoAlice</cite>
+          <p style="color:var(--muted)">— Alice Smith, @CryptoAlice</p>
         </div>
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/60x60?text=BM" alt="Bob Martin avatar" />
-          <p>"Joined 3 campaigns already—quick approvals and transparent rewards. Highly recommend!"</p>
-          <cite>— Bob Martin, @DeFiBob</cite>
+        <div class="card">
+          <p>"Joined 3 campaigns already—quick approvals and transparent rewards."</p>
+          <p style="color:var(--muted)">— Bob Martin, @DeFiBob</p>
         </div>
       </div>
     </div>
@@ -671,8 +368,8 @@
       </div>
     </div>
   </section>
-  
-  <!-- FAQ -->
+
+  <!-- FAQ & AIRDROP -->
   <section class="section" id="faq">
     <div class="container">
       <h2 style="margin:0 0 .8rem">FAQ</h2>
@@ -683,12 +380,22 @@
         </details>
         <details>
           <summary><b>What decides my reward?</b></summary>
-          <p>Mindshare score: Social Card (followers & KOL quality) × content quality × diversity × timing, plus a tiny randomness to avoid gaming. Admins can add bonuses for exceptional posts.</p>
+          <p>Mindshare: Social Card (followers & KOL quality) × content quality × diversity × timing, plus a small randomness to avoid gaming. Admins can add bonuses for exceptional posts.</p>
         </details>
         <details>
           <summary><b>What if the pool runs out?</b></summary>
           <p>The campaign auto-closes or the client tops up. All approved proofs remain recorded; final settlement occurs at season end.</p>
         </details>
+      </div>
+
+      <h2 style="margin:1.8rem 0 .8rem">Airdrop</h2>
+      <div class="card">
+        <p><b>Season 0</b> — We allocate a portion of <b>$MICRO</b> to early contributors who help bootstrap the community.</p>
+        <ul>
+          <li>Signals: consistent weekly activity, original posts, solid referrals</li>
+          <li>How to qualify: connect X, join campaigns, publish engaging posts, share your referral link</li>
+          <li>Distribution: periodic snapshots, rewards after each season</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -709,7 +416,7 @@
     </p>
   </footer>
 
-  <!-- Back to Top Button -->
+  <!-- Back to Top -->
   <button id="back-to-top" aria-label="Back to top">↑</button>
 
   <!-- Early Beta bar -->
@@ -721,15 +428,15 @@
 
   <script>
     // Toggle roadmap item
-    function toggleRoadmap(item) {
-      item.classList.toggle('open');
-    }
+    function toggleRoadmap(item){ item.classList.toggle('open'); }
 
     // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href');
+        const el=document.querySelector(id);
+        if(!el) return;
+        e.preventDefault(); el.scrollIntoView({behavior:'smooth'});
       });
     });
 
@@ -797,22 +504,18 @@
       });
     })();
 
-    // Newsletter form
-    (function() {
-      const forms = ['newsletterForm', 'footerNewsletter'];
-      forms.forEach(id => {
-        const form = document.getElementById(id);
-        if (!form) return;
-        form.addEventListener('submit', e => {
+    // Newsletter forms (top + footer)
+    (function(){
+      ['newsletterForm','footerNewsletter'].forEach(id=>{
+        const form=document.getElementById(id);
+        if(!form) return;
+        form.addEventListener('submit',e=>{
           e.preventDefault();
-          const email = form.querySelector('input[type="email"]').value.trim();
-          if (!email || !/\S+@\S+\.\S+/.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-          }
-          // Simulate submission
-          const success = id === 'newsletterForm' ? document.getElementById('newsletterSuccess') : alert('Thanks for subscribing!');
-          if (success) success.style.display = 'block';
+          const input=form.querySelector('input[type="email"]');
+          const email=(input?.value||'').trim();
+          if(!/\S+@\S+\.\S+/.test(email)){ alert('Please enter a valid email'); return; }
+          if(id==='newsletterForm'){ document.getElementById('newsletterSuccess').style.display='block'; }
+          else{ alert('Thanks for subscribing!'); }
           form.reset();
         });
       });
@@ -820,46 +523,34 @@
 
     // Early Beta bar memory
     (function(){
-      try {
-        const bar = document.getElementById('beta-bar');
-        const btn = document.getElementById('beta-close');
-        const key = 'microfi_beta_dismissed_v1';
-        if(localStorage.getItem(key) === '1') bar.style.display = 'none';
-        btn && btn.addEventListener('click', () => {
-          bar.style.display = 'none';
-          localStorage.setItem(key,'1');
-        });
-      } catch(e) {}
+      try{
+        const bar=document.getElementById('beta-bar');
+        const btn=document.getElementById('beta-close');
+        const key='microfi_beta_dismissed_v1';
+        if(localStorage.getItem(key)==='1') bar.style.display='none';
+        btn&&btn.addEventListener('click',()=>{bar.style.display='none';localStorage.setItem(key,'1');});
+      }catch(e){}
     })();
 
-    // Back to top button
-    (function() {
-      const btn = document.getElementById('back-to-top');
-      window.addEventListener('scroll', () => {
-        btn.style.display = window.scrollY > 300 ? 'block' : 'none';
-      });
-      btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    // Back to top
+    (function(){
+      const btn=document.getElementById('back-to-top');
+      window.addEventListener('scroll',()=>{ btn.style.display=window.scrollY>300?'block':'none'; });
+      btn.addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
     })();
 
     // Roadmap animation on scroll
-    (function() {
-      const items = document.querySelectorAll('.roadmap-item');
-      const io = new IntersectionObserver(entries => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('animate');
-            }, index * 200);
+    (function(){
+      const items=document.querySelectorAll('.roadmap-item');
+      const io=new IntersectionObserver(entries=>{
+        entries.forEach((entry,index)=>{
+          if(entry.isIntersecting){
+            setTimeout(()=>{ entry.target.classList.add('animate'); }, index*200);
           }
         });
-      }, { threshold: 0.1 });
-      items.forEach(item => io.observe(item));
+      },{threshold:0.1});
+      items.forEach(i=>io.observe(i));
     })();
   </script>
 </body>
 </html>
-
-
-
