@@ -55,9 +55,21 @@
     .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1rem}
     .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 
-    /* Bot preview: SQUARE */
-    .bot-shot{aspect-ratio:1/1;border-radius:16px;border:1px solid var(--line);
-      background:#0d0e18 url('BOT_PREVIEW.jpg') center/cover no-repeat}
+    /* Bot preview: SQUARE with overlay text */
+    .bot-shot{
+      position:relative;aspect-ratio:1/1;border-radius:16px;border:1px solid var(--line);
+      background:#0d0e18 url('BOT_PREVIEW.jpg') center/cover no-repeat;overflow:hidden
+    }
+    .bot-shot::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(11,11,17,0),rgba(11,11,17,.55));
+    }
+    .bot-overlay{
+      position:absolute;inset:auto 0 0 0;padding:1rem 1.1rem;z-index:2;color:#fff;
+      display:flex;flex-direction:column;gap:.25rem
+    }
+    .bot-overlay h4{margin:0;font-size:1.05rem}
+    .bot-overlay p{margin:0;color:#dfe3ee}
 
     /* Flow diagram */
     .flow{background:linear-gradient(180deg,#121326,#0d0e18);border:1px solid var(--line);border-radius:16px;padding:1.25rem}
@@ -85,7 +97,6 @@
   <nav>
     <div class="container nav-wrap">
       <div class="brand">
-        <!-- Ensure logo.png exists next to this file -->
         <img src="logo.png" alt="MicroFi" onerror="this.style.display='none'"/>
         <b>MicroFi</b>
       </div>
@@ -133,8 +144,13 @@
     <div class="container">
       <h2 style="margin:0 0 .8rem">Telegram bot preview</h2>
       <div class="cols-2">
-        <!-- Replace BOT_PREVIEW.jpg with a square screenshot of your bot UI -->
-        <div class="bot-shot" title="MicroFi Bot Preview"></div>
+        <!-- Replace BOT_PREVIEW.jpg with a square screenshot -->
+        <div class="bot-shot">
+          <div class="bot-overlay">
+            <h4>MicroFi Bot</h4>
+            <p>Campaigns • Proofs • Mindshare • Referrals</p>
+          </div>
+        </div>
         <div class="card">
           <h3>What you can do in the bot</h3>
           <ul>
@@ -146,20 +162,20 @@
           </ul>
           <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
             <a class="btn" href="https://t.me/MicroFiBot" target="_blank" rel="noopener">Open bot</a>
-            <a class="btn secondary" href="#flow">Reward Flow</a>
+            <a class="btn secondary" href="#join">Join campaign</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- $MICRO FLOW / “TOKENOMICS” -->
+  <!-- $MICRO FLOW / TOKENOMICS -->
   <section class="section" id="flow">
     <div class="container">
       <h2 style="margin:0 0 .8rem">How $MICRO flows</h2>
 
       <div class="flow" title="Client-funded pool → Telegram launch → Engagement → Mindshare rewards">
-        <!-- Responsive SVG flow diagram -->
+        <!-- Clean, smooth SVG flow diagram -->
         <svg viewBox="0 0 1100 360" role="img" aria-label="Flow of $MICRO from clients to creators">
           <defs>
             <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -172,44 +188,45 @@
               .n{fill:#11121a;stroke:#1b1c2b;stroke-width:2;rx:14;ry:14;filter:url(#s)}
               .t{fill:#e7e9ee;font:600 16px Inter,Arial}
               .sm{fill:#b9c2d2;font:400 13px Inter,Arial}
-              .a{stroke:url(#g);stroke-width:3;marker-end:url(#m)}
+              .a{fill:none;stroke:url(#g);stroke-width:3;marker-end:url(#m)}
             </style>
-            <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse">
+            <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
               <path d="M0,0 L12,6 L0,12 z" fill="url(#g)"/>
             </marker>
           </defs>
 
-          <!-- Nodes -->
+          <!-- Top row -->
           <rect class="n" x="30"  y="40"  width="270" height="90"/>
           <text class="t" x="50" y="72">Client buys $MICRO</text>
           <text class="sm" x="50" y="98">Amount scales with campaign days (min 10)</text>
 
-          <rect class="n" x="320" y="40"  width="300" height="90"/>
-          <text class="t" x="340" y="72">Lock campaign pool</text>
-          <text class="sm" x="340" y="98">Pool locked for selected duration</text>
+          <rect class="n" x="330" y="40"  width="290" height="90"/>
+          <text class="t" x="350" y="72">Lock campaign pool</text>
+          <text class="sm" x="350" y="98">Pool locked for selected duration</text>
 
-          <rect class="n" x="650" y="40"  width="200" height="90"/>
+          <rect class="n" x="650" y="40"  width="220" height="90"/>
           <text class="t" x="670" y="72">Launch on Telegram</text>
           <text class="sm" x="670" y="98">Visible in MicroFi bot</text>
 
-          <rect class="n" x="890" y="40"  width="180" height="90"/>
-          <text class="t" x="905" y="72">Engagers & Raiders</text>
-          <text class="sm" x="905" y="98">Create posts, submit proofs</text>
+          <rect class="n" x="910" y="40"  width="160" height="90"/>
+          <text class="t" x="930" y="72">Engagers & Raiders</text>
+          <text class="sm" x="930" y="98">Create posts, submit proofs</text>
 
-          <rect class="n" x="260" y="210" width="320" height="90"/>
-          <text class="t" x="280" y="242">Mindshare distribution</text>
-          <text class="sm" x="280" y="268">Approved proofs earn from the pool</text>
+          <!-- Bottom row -->
+          <rect class="n" x="270" y="210" width="330" height="90"/>
+          <text class="t" x="290" y="242">Mindshare distribution</text>
+          <text class="sm" x="290" y="268">Approved proofs earn from the pool</text>
 
-          <rect class="n" x="640" y="210" width="280" height="90"/>
+          <rect class="n" x="640" y="210" width="300" height="90"/>
           <text class="t" x="660" y="242">Seasonal settlement</text>
           <text class="sm" x="660" y="268">Bonuses + referral payouts</text>
 
-          <!-- Arrows -->
-          <path class="a" d="M300,85 L320,85"/>
-          <path class="a" d="M620,85 L650,85"/>
-          <path class="a" d="M850,85 L890,85"/>
-          <path class="a" d="M980,130 C980,200 960,240 600,240"/>
-          <path class="a" d="M580,255 L640,255"/>
+          <!-- Smooth arrows -->
+          <path class="a" d="M300,85 C320,85 340,85 330,85"/>
+          <path class="a" d="M620,85 C640,85 660,85 650,85"/>
+          <path class="a" d="M870,85 C890,85 905,85 910,85"/>
+          <path class="a" d="M990,130 C990,175 950,210 600,210"/>
+          <path class="a" d="M600,255 C620,255 635,255 640,255"/>
         </svg>
       </div>
 
@@ -225,6 +242,40 @@
             <input id="rate" type="number" min="0" value="5000" />
           </label>
           <span class="pill">Required pool: <b id="pool">70,000 MICRO</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN CAMPAIGN FORM -->
+  <section class="section" id="join">
+    <div class="container">
+      <h2 style="margin:0 0 .8rem">Join the current campaign</h2>
+      <div class="card" style="max-width:600px;margin:auto;text-align:left">
+        <form id="joinForm" novalidate>
+          <label><b>Enter X @username</b></label><br/>
+          <input type="text" id="username" required placeholder="@yourhandle"
+            style="width:100%;margin:.5rem 0 1rem;background:#121327;color:#e7e9ee;
+                   border:1px solid #26283a;border-radius:10px;padding:.6rem"/>
+
+          <label style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem">
+            <input type="checkbox" id="followed" style="accent-color:#7c3aed"/>
+            <span>Followed <a href="https://x.com/MicroFI_on" target="_blank">@MicroFI_on</a> and turned on notifications ✅</span>
+          </label>
+
+          <label><b>Like + Retweet + Reply (drop link)</b></label><br/>
+          <input type="url" id="tweet" required placeholder="https://x.com/you/status/..."
+            style="width:100%;margin:.5rem 0 1.2rem;background:#121327;color:#e7e9ee;
+                   border:1px solid #26283a;border-radius:10px;padding:.6rem"/>
+
+          <button type="submit" class="btn" style="width:100%;justify-content:center">
+            Submit & Join
+          </button>
+        </form>
+
+        <div id="successMsg" style="display:none;text-align:center;margin-top:1rem;
+            padding:.8rem;border-radius:12px;background:rgba(6,182,212,.1);color:#06b6d4">
+          🎉 You’re in the list! Our team will verify your post soon.
         </div>
       </div>
     </div>
@@ -295,14 +346,27 @@
       const days = document.getElementById('days');
       const rate = document.getElementById('rate');
       const out  = document.getElementById('pool');
-      function calc(){
-        const d = Math.max(10, +days.value||10);
-        const r = Math.max(0, +rate.value||0);
-        out.textContent = fmt(d*r) + ' MICRO';
+      if(days && rate && out){
+        function calc(){
+          const d = Math.max(10, +days.value||10);
+          const r = Math.max(0, +rate.value||0);
+          out.textContent = fmt(d*r) + ' MICRO';
+        }
+        days.addEventListener('input', calc);
+        rate.addEventListener('input', calc);
+        calc();
       }
-      days.addEventListener('input', calc);
-      rate.addEventListener('input', calc);
-      calc();
+    })();
+
+    // Join campaign mini-form
+    (function(){
+      const form = document.getElementById('joinForm');
+      if(!form) return;
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        form.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      });
     })();
 
     // Early Beta bar memory
