@@ -277,32 +277,220 @@
   </section>
 
   <!-- $MICRO FLOW / TOKENOMICS (Flowchart) -->
-  <section class="section" id="flow">
-    <div class="container">
-      <h2 style="margin:0 0 .8rem">How $MICRO flows – The MicroFi Workflow</h2>
-      <p class="lead" style="margin-bottom:1rem">A simple flow diagram showing the journey of $MICRO tokens within the MicroFi ecosystem.</p>
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="MicroFi: A simple flow diagram showing the journey of $MICRO tokens within the MicroFi ecosystem." />
+  <title>How $MICRO flows – MicroFi Workflow</title>
+  <style>
+    :root {
+      --bg-color: #2c2c38;
+      --purple: #c084fc;
+      --purple-dark: #a855f7;
+      --red: #f87171;
+      --red-dark: #ef4444;
+      --blue: #60a5fa;
+      --blue-dark: #3b82f6;
+      --cyan: #22d3ee;
+      --cyan-dark: #06b6d4;
+      --text-color: #ffffff;
+      --arrow-color: #93c5fd;
+      --font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+    .workflow-container {
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem 0;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #d1d5db;
+    }
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, auto);
+      gap: 2rem 3rem;
+      align-items: center;
+    }
+    .flow-node {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem 1.5rem;
+      font-weight: bold;
+      position: relative;
+    }
+    .flow-node.purple {
+      background-color: var(--purple);
+      border: 2px solid var(--purple-dark);
+      border-radius: 16px;
+      grid-column: 1 / 3;
+      grid-row: 1;
+    }
+    .flow-node.red {
+      background-color: var(--red);
+      border: 2px solid var(--red-dark);
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+    }
+    .flow-node.blue {
+      background-color: var(--blue);
+      border: 2px solid var(--blue-dark);
+      border-radius: 16px;
+    }
+    .flow-node.cyan {
+      background-color: var(--cyan);
+      border: 2px solid var(--cyan-dark);
+      border-radius: 16px;
+    }
+    .flow-node span {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: normal;
+      margin-top: 4px;
+    }
+    #client-purchase { grid-column: 1 / 2; grid-row: 1; }
+    #campaign-lock-1 { grid-column: 2 / 3; grid-row: 1; }
+    #campaign-lock-2 { grid-column: 1 / 2; grid-row: 3; }
+    #campaign-launch { grid-column: 2 / 4; grid-row: 2; padding: 0.8rem 1.5rem; }
+    #engagers-participate { grid-column: 2 / 3; grid-row: 3; }
+    #mindshare { grid-column: 3 / 4; grid-row: 3; }
+    #engagers-stake { grid-column: 2 / 4; grid-row: 4; }
+    #additional-rewards { grid-column: 3 / 5; grid-row: 5; }
 
-      <div class="flow">
-        <div class="mermaid">
-          graph TD
-            A[Client Purchases $MICRO<br/><small>Amount scales with campaign duration</small>] --> B{Campaign Lock<br/><small>$MICRO pool locked for duration</small>}
-            B --> C[Campaign Launch<br/><small>Visible on MicroFi Telegram bot</small>]
-            C --> D[Engagers & Raiders Participate<br/><small>Users create content & submit proofs</small>]
-            D --> E[Mindshare Distribution<br/><small>Approved proofs earn from $MICRO pool</small>]
-            E --> F{Engagers Stake $MICRO<br/>or Use / Trade}
-            F --> G[Additional Rewards / Items / USDC]
+    /* Arrows */
+    .arrow {
+      position: absolute;
+      background-color: var(--arrow-color);
+      z-index: -1;
+    }
+    .arrow.right { width: 3rem; height: 4px; }
+    .arrow.down { width: 4px; height: 100%; }
+    .arrow.corner-down-right { width: 4px; height: 100%; border-bottom: 4px solid var(--arrow-color); border-right: 4px solid var(--arrow-color); }
 
-            %% Styling for dark theme & branding
-            classDef process fill:#1e40af,stroke:#7c3aed,stroke-width:2px,color:#e7e9ee
-            classDef decision fill:#ef4444,stroke:#dc2626,stroke-width:2px,color:#fff
-            classDef outcome fill:#3b82f6,stroke:#06b6d4,stroke-width:1px,color:#e7e9ee
-            class A,C,D,E process
-            class B decision
-            class F outcome
-            linkStyle default stroke:#06b6d4,stroke-width:2px
-        </div>
+    /* Arrow Positioning */
+    #client-purchase::after { content: ''; position: absolute; right: -3rem; top: 50%; transform: translateY(-50%); width: 3rem; height: 4px; background-color: var(--arrow-color); }
+    #campaign-lock-1::after { content: ''; position: absolute; right: 50%; top: 100%; transform: translateX(50%); width: 4px; height: calc(2rem + 30px); background-color: var(--arrow-color); }
+    #campaign-launch::after { content: ''; position: absolute; right: -1.75rem; top: 50%; transform: translateY(-50%); width: 1.75rem; height: 4px; background-color: var(--arrow-color); }
+    #client-purchase > .down-arrow { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); width: 4px; height: 6rem; background-color: var(--arrow-color); }
+    #client-purchase > .corner-arrow { position: absolute; left: 50%; top: calc(100% + 6rem); transform: translateX(-50%); width: 7rem; height: 4px; background-color: var(--arrow-color); }
+
+    #campaign-lock-2::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); width: 3rem; height: 4px; background-color: var(--arrow-color); }
+    #engagers-participate::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); width: 3rem; height: 4px; background-color: var(--arrow-color); }
+    #mindshare > .down-arrow { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); width: 4px; height: 4rem; background-color: var(--arrow-color); }
+    #mindshare > .corner-arrow { position: absolute; left: calc(50% - 5rem); top: calc(100% + 4rem); transform: translateX(-50%); width: 5rem; height: 4px; background-color: var(--arrow-color); }
+
+    #engagers-stake::after { content: ''; position: absolute; right: 50%; top: 100%; transform: translateX(50%); width: 4px; height: 2rem; background-color: var(--arrow-color); }
+    .final-arrow-leg1 { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); width: 4px; height: 2rem; background-color: var(--arrow-color); }
+    .final-arrow-leg2 { position: absolute; left: calc(50% - 8rem); top: calc(100% + 2rem); width: 16rem; height: 4px; background-color: var(--arrow-color); }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body { padding: 1rem; }
+      h1 { font-size: 2rem; }
+      .flow-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 3rem 1rem;
+        justify-items: center;
+      }
+      .flow-node, .flow-node.purple, .flow-node.red, .flow-node.blue, .flow-node.cyan {
+        grid-column: auto;
+        grid-row: auto;
+        width: 80%;
+        max-width: 300px;
+      }
+       .flow-node.red { width: 100px; height: 100px; }
+      .arrow, [class*="::after"], [class*="> ."] { display: none; /* Hide complex arrows on mobile */ }
+      /* Simple downward arrows for mobile */
+      .flow-node:not(:last-child)::before {
+        content: '↓';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        color: var(--arrow-color);
+        margin-top: 0.5rem;
+      }
+       #campaign-lock-2::before, #engagers-participate::before { content: none; } /* Hide arrows where flow is not straight down */
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="workflow-container">
+    <div class="header">
+      <h1>How $MICRO flows – MicroFi Workflow</h1>
+      <p>A simple flow diagram showing the journey of $MICRO tokens within MicroFi ecosytem.</p>
+    </div>
+
+    <div class="flow-grid">
+
+      <div id="client-purchase" class="flow-node purple">
+        Client Purchases $MICRO
+        <span>Amount scales with campaign duration</span>
+        <div class="down-arrow"></div>
+        <div class="corner-arrow"></div>
       </div>
 
+      <div id="campaign-lock-1" class="flow-node red">Campaign Lock</div>
+
+      <div id="campaign-launch" class="flow-node blue">
+        Campaign Launch
+        <span>$MICRO locked for duration</span>
+      </div>
+
+      <div id="campaign-lock-2" class="flow-node red">Campaign Lock</div>
+
+      <div id="engagers-participate" class="flow-node blue">Engagers & Raiders Participate</div>
+
+      <div id="mindshare" class="flow-node red">
+        Mindshare Distribution
+        <div class="down-arrow"></div>
+        <div class="corner-arrow"></div>
+      </div>
+
+      <div id="engagers-stake" class="flow-node blue">
+        Engagers Stake $MICRO or Use / Trade
+        <div class="final-arrow-leg1"></div>
+        <div class="final-arrow-leg2"></div>
+      </div>
+
+      <div id="additional-rewards" class="flow-node cyan">Additional Rewards / Items / USC</div>
+
+    </div>
+  </div>
+
+</body>
+</html>
       <!-- Mini calculator -->
       <div class="card" style="margin-top:1rem">
         <h3 style="margin:.2rem 0 .4rem">Campaign pool estimator</h3>
@@ -672,5 +860,6 @@
   </script>
 </body>
 </html>
+
 
 
