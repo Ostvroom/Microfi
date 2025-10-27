@@ -35,6 +35,68 @@
     .icon{width: 24px; height: 24px;}
   </style>
 </head>
+
+<script>
+  // Helper to show alert
+  function showAlert(type, html) {
+    const box = document.getElementById('formAlert');
+    box.classList.remove('hidden');
+    box.innerHTML = html;
+    // style
+    box.classList.remove('border-white/10','bg-white/5');
+    if (type === 'success') {
+      box.classList.add('border-[rgb(var(--brand))]/40');
+      box.style.background = 'linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))';
+    } else {
+      box.classList.add('border-red-400/40');
+      box.style.background = 'linear-gradient(90deg, rgba(255,0,0,0.06), rgba(255,255,255,0.03))';
+    }
+  }
+
+  const form = document.getElementById('joinForm');
+  const btn  = document.getElementById('joinBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // basic guard
+    const username = form.username.value.trim();
+    if (!username) {
+      showAlert('error', 'Please add your X username.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    try {
+      const formData = new FormData(form);
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
+
+      if (res.ok) {
+        form.reset();
+        showAlert(
+          'success',
+          `🎉 <b>Congrats!</b> You’re in. Stay updated — follow our X:
+          <a href="https://x.com/MicroFI_on" target="_blank" class="underline">twitter.com/MicroFI_on</a>`
+        );
+      } else {
+        const data = await res.json().catch(() => ({}));
+        const msg = data?.errors?.map(e => e.message).join(', ') || 'Submission failed. Please try again.';
+        showAlert('error', msg);
+      }
+    } catch (err) {
+      showAlert('error', 'Network error — please try again.');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Submit & Join';
+    }
+  });
+</script>
 <body class="page-bg bg-[rgb(var(--bg))] text-white"> 
   <!-- ===== Sticky Nav ===== -->
   <header class="sticky top-0 z-40">
@@ -206,25 +268,6 @@
     </div>
   </section>
 
-  <!-- ===== Join current campaign ===== -->
-  <section id="join" class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
-    <div class="glass rounded-2xl p-6">
-      <h2 class="text-2xl font-bold">Early Access </h2>
-      <form class="mt-6 grid gap-4">
-        <label class="text-sm">X username (without @)
-          <input type="text" placeholder="yourhandle" class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 outline-none"/>
-        </label>
-        <div class="grid gap-2 text-sm">
-          <div class="flex items-center gap-2"><input type="checkbox" class="h-4 w-4"/> <span>Followed @MicroFI_on and turned on notifications ✅</span></div>
-        </div>
-        <label class="text-sm">Link to your post (Like + Retweet + Reply)
-          <input type="url" placeholder="https://x.com/you/status/..." class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 outline-none"/>
-        </label>
-        <button type="button" class="mt-2 rounded-xl bg-gradient-to-r from-[rgb(var(--brand))] to-[rgb(var(--brand-2))] px-5 py-3 font-semibold glow">Submit & Join</button>
-        <p class="text-xs text-white/60">Provide your X handle without the @ symbol and the direct link to your tweet. Reviews usually complete within the season window.</p>
-      </form>
-    </div>
-  </section>
 
   <!-- ===== FAQ ===== -->
   <section id="faq" class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
@@ -284,6 +327,48 @@
       </div>
     </div>
   </section>
+
+<!-- ===== Join current campaign ===== -->
+<section id="join" class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+  <div class="glass rounded-2xl p-6">
+    <h2 class="text-2xl font-bold">Early Access</h2>
+
+    <!-- Success / Error alert (initially hidden) -->
+    <div id="formAlert" class="mt-4 hidden rounded-xl border border-white/10 bg-white/5 p-4 text-sm"></div>
+
+    <form id="joinForm" action="https://formspree.io/f/xrboepdd" method="POST" class="mt-6 grid gap-4" novalidate>
+      <!-- honeypot -->
+      <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+      <input type="hidden" name="_subject" value="New Early Access signup" />
+      <input type="hidden" name="_template" value="table" />
+
+      <label class="text-sm">X username (without @)
+        <input name="username" required type="text" placeholder="yourhandle"
+               class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 outline-none"/>
+      </label>
+
+      <label class="flex items-center gap-2 text-sm">
+        <input name="followed" type="checkbox" value="yes" class="h-4 w-4"/>
+        <span>Followed @MicroFI_on and turned on notifications ✅</span>
+      </label>
+
+      <label class="text-sm">Link to your post (Like + Retweet + Reply)
+        <input name="post_link" type="url" placeholder="https://x.com/you/status/..."
+               class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 outline-none"/>
+      </label>
+
+      <button id="joinBtn" type="submit"
+              class="mt-2 rounded-xl bg-gradient-to-r from-[rgb(var(--brand))] to-[rgb(var(--brand-2))] px-5 py-3 font-semibold glow">
+        Submit & Join
+      </button>
+
+      <p class="text-xs text-white/60">
+        Provide your X handle without the @ symbol and the direct link to your tweet.
+        Reviews usually complete within the season window.
+      </p>
+    </form>
+  </div>
+</section>
 
   <!-- ===== Footer ===== -->
   <footer class="border-t border-white/10 py-10 text-sm text-white/70">
